@@ -91,7 +91,7 @@ watch(() => props.activeQuestion, scrollToActive);
         position: absolute;
         top: 0;
         bottom: 0;
-        width: 80px;
+        width: 240px;
         pointer-events: none;
         z-index: 1;
     }

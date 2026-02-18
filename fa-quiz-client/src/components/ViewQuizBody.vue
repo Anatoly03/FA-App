@@ -100,40 +100,6 @@ mark {
         font-size: 16px; // Prevent iOS text zoom
     }
 
-    .options {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin: auto;
-        gap: 4px;
-
-        @media (max-width: 768px) {
-            gap: 8px;
-        }
-
-        .option-item {
-            display: flex;
-            flex: 1;
-            padding: 4px;
-            border-radius: 4px;
-        }
-
-        .option-correction-marker, .option-selection-marker {
-            display: flex;
-            width: 24px;
-            justify-content: center;
-            align-items: center;
-
-            .fa-circle-check {
-                color: green;
-            }
-
-            .fa-circle-xmark {
-                color: darkred;
-            }
-        }
-    }
-
     a,
     button {
         display: flex;
@@ -179,14 +145,15 @@ mark {
         display: flex;
         flex-direction: row;
         gap: 8px;
-        justify-content: space-between;
+        justify-content: center;
         padding: 16px;
+        padding-top: 0;
 
         button {
             display: flex;
+            flex: 1;
             padding: 8px;
             font-size: 1.2em;
-            flex: 0.4;
             justify-content: center;
             
             @media (max-width: 768px) {
