@@ -3,7 +3,7 @@
         <div class="view-quiz-pagination" ref="containerRef">
             <span class="width-filler"></span>
             <span
-                class="quiz-paginationentry"
+                class="quiz-pagination-entry"
                 v-for="question in props.loadedQuestions"
                 :key="question.id"
                 :data-question-id="question.id"

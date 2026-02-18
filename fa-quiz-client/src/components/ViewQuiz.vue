@@ -1,7 +1,7 @@
 <template>
     <div class="view-quiz">
         <ViewQuizPagination ref="paginationRef" :loadedQuestions="loadedQuestions" :activeQuestion="activeQuizEntry?.id ?? null" :selectActiveQuestion="selectActiveQuestion" />
-        <ViewQuizBody :onNext="nextQuizPage" :onBack="activeQuizEntryIndex > 0 && previousQuizPage">
+        <ViewQuizBody :onNext="nextQuestionExists && nextQuizPage" :onBack="activeQuizEntryIndex > 0 && previousQuizPage">
             <ViewQuizQuestion
                 v-if="activeQuizEntry && activeQuizEntry.item === 'question'"
                 :question="activeQuizEntry.question"
@@ -36,6 +36,7 @@ const chapter = ref(0);
  */
 const loadedQuestions = ref<QuizEntry[]>([]);
 const paginationRef = ref<InstanceType<typeof ViewQuizPagination> | null>(null);
+const nextQuestionExists = ref(true);
 
 /**
  * Active quiz entry. This is the quiz that is currently shown in the quiz body.
@@ -90,6 +91,7 @@ function getQuizEntryFromLecture(lectureModel: RecordModel) {
  * Re-scroll pagination to active quiz entry.
  */
 function updatePagination() {
+    nextQuestionExists.value = true;
     paginationRef.value?.scrollToActive();
 }
 
@@ -98,6 +100,8 @@ function updatePagination() {
  * as active. Additionally control chapter locks.
  */
 async function nextQuizPage() {
+    if (!nextQuestionExists.value) return;
+
     const activeIndex = loadedQuestions.value.findIndex((q) => q.isActive);
     if (activeIndex === -1) activeIndex = loadedQuestions.value.length - 1;
 
@@ -163,30 +167,39 @@ function proofAnswer(selected: number) {
  * Fetch the next quiz from the API and set it to the `quiz` variable.
  */
 async function fetchChapter(resetActive = true) {
-    // fetch all lectures for the current chapter
-    const chapterLectures = await pb.collection("chapters").getFirstListItem(`index = ${chapter.value}`, {
-        requestKey: "chapter-" + chapter.value,
-        expand: "lessons",
-    });
+    try {
+        // fetch all lectures for the current chapter
+        const chapterLectures = await pb.collection("chapters").getFirstListItem(`index = ${chapter.value}`, {
+            requestKey: "chapter-" + chapter.value,
+            expand: "lessons",
+        });
 
-    // fetch all quizzes for the current chapter
-    const chapterQuestions = await pb.collection("mc_questions").getFullList({
-        requestKey: "questions-chapter-" + chapter.value,
-        expand: "chapter",
-        filter: `chapter.index = ${chapter.value}`,
-    });
+        // fetch all quizzes for the current chapter
+        const chapterQuestions = await pb.collection("mc_questions").getFullList({
+            requestKey: "questions-chapter-" + chapter.value,
+            expand: "chapter",
+            filter: `chapter.index = ${chapter.value}`,
+        });
 
-    // load lectures
-    if (chapterLectures.expand.lessons && chapterLectures.expand.lessons.length > 0) loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
+        // load lectures
+        if (chapterLectures.expand.lessons && chapterLectures.expand.lessons.length > 0) loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
 
-    // load questions
-    const shuffled = chapterQuestions.map(getQuizEntryFromQuestion).sort(() => Math.random() - 0.5);
-    loadedQuestions.value.push(...shuffled);
+        // load questions
+        const shuffled = chapterQuestions.map(getQuizEntryFromQuestion).sort(() => Math.random() - 0.5);
+        loadedQuestions.value.push(...shuffled);
 
-    // select first
-    if (resetActive) {
-        loadedQuestions.value[0].isActive = true;
-        updatePagination();
+        // load checkpoint (new chapter announce)
+
+
+        // select first
+        if (resetActive) {
+            loadedQuestions.value[0].isActive = true;
+            updatePagination();
+        }
+    } catch (e) {
+        console.error("Error fetching chapter", e);
+        nextQuestionExists.value = false;
+        return;
     }
 }
 
