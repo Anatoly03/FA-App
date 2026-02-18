@@ -2,8 +2,9 @@
 .env
 
 # PocketBase data
-# we do not gitignore database so production server can pull
-# pb_data
+pb_data
+**/pb_sync/users.json
+**/pb_sync/_*.json
 
 # Node modules, Client
 dist
@@ -12,3 +13,4 @@ package-lock.json
 
 # Local
 local
+.gitignore

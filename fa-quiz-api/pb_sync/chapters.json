@@ -1,0 +1,48 @@
+[
+  {
+    "collectionId": "pbc_2272205672",
+    "collectionName": "chapters",
+    "created": "2026-02-18 14:49:43.692Z",
+    "id": "gftsg6bdm8im7eq",
+    "index": 1,
+    "lessons": [
+      "bgxm86mdlqw2shl"
+    ],
+    "title": "Property, Plant, and Equipment \u0026 Investment Property",
+    "updated": "2026-02-18 20:58:39.808Z"
+  },
+  {
+    "collectionId": "pbc_2272205672",
+    "collectionName": "chapters",
+    "created": "2026-02-18 14:49:55.264Z",
+    "id": "dr2w23v6mk00pw9",
+    "index": 0,
+    "lessons": [
+      "quanh21iq5rbdpj",
+      "r7nivr797t9pho3",
+      "2t0sil646w8xkny"
+    ],
+    "title": "Introduction",
+    "updated": "2026-02-18 19:08:54.229Z"
+  },
+  {
+    "collectionId": "pbc_2272205672",
+    "collectionName": "chapters",
+    "created": "2026-02-18 15:08:26.152Z",
+    "id": "c6renzs6o1jr9ps",
+    "index": 2,
+    "lessons": [],
+    "title": "Intangible Assets",
+    "updated": "2026-02-18 15:08:26.152Z"
+  },
+  {
+    "collectionId": "pbc_2272205672",
+    "collectionName": "chapters",
+    "created": "2026-02-18 18:02:35.666Z",
+    "id": "eg8rimxfcn5hxx5",
+    "index": 3,
+    "lessons": [],
+    "title": "Inventories",
+    "updated": "2026-02-18 18:02:35.666Z"
+  }
+]
