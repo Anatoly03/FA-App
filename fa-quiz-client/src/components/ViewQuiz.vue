@@ -94,20 +94,26 @@ function updatePagination() {
  * Advance pagination. Find the current active question and set the next one
  * as active. Additionally control chapter locks.
  */
-function nextQuizPage() {
+async function nextQuizPage() {
     const activeIndex = loadedQuestions.value.findIndex((q) => q.isActive);
     if (activeIndex === -1) activeIndex = loadedQuestions.value.length - 1;
 
     if (activeIndex < 0) throw new Error("unreachable");
 
-    // deactivate
-    loadedQuestions.value[activeIndex].isActive = false;
-
-    // activate next
     if (activeIndex < loadedQuestions.value.length - 1) {
+        // deactivate
+        loadedQuestions.value[activeIndex].isActive = false;
+        
+        // activate next
         loadedQuestions.value[activeIndex + 1].isActive = true;
         return updatePagination();
     }
+
+    // if no next quiz, load next chapter
+    chapter.value += 1;
+    await fetchChapter(false);
+
+    nextQuizPage();
 }
 
 function selectActiveQuestion(id: string) {
@@ -129,7 +135,7 @@ function proofAnswer(selected: number) {
 /**
  * Fetch the next quiz from the API and set it to the `quiz` variable.
  */
-async function fetchChapter() {
+async function fetchChapter(resetActive = true) {
     // fetch all lectures for the current chapter
     const chapterLectures = await pb.collection("chapters").getFirstListItem(`index = ${chapter.value}`, {
         requestKey: "chapter-" + chapter.value,
@@ -143,22 +149,23 @@ async function fetchChapter() {
         filter: `chapter.index = ${chapter.value}`,
     });
 
-    console.debug(chapterLectures);
-
     // load lectures
-    loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
+    if (chapterLectures.expand.lessons && chapterLectures.expand.lessons.length > 0)
+        loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
 
     // load questions
     const shuffled = chapterQuestions.map(getQuizEntryFromQuestion).sort(() => Math.random() - 0.5);
     loadedQuestions.value.push(...shuffled);
 
     // select first
-    loadedQuestions.value[0].isActive = true;
-    updatePagination();
+    if (resetActive) {
+        loadedQuestions.value[0].isActive = true;
+        updatePagination();
+    }
 }
 
 onMounted(() => {
-    fetchChapter();
+    fetchChapter(true);
 });
 </script>
 
