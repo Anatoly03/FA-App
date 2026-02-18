@@ -1,11 +1,6 @@
 <template>
     <div class="view-quiz">
-        <ViewQuizPagination
-            ref="paginationRef"
-            :loadedQuestions="loadedQuestions"
-            :activeQuestion="activeQuizEntry?.id ?? null"
-            :selectActiveQuestion="selectActiveQuestion"
-        />
+        <ViewQuizPagination ref="paginationRef" :loadedQuestions="loadedQuestions" :activeQuestion="activeQuizEntry?.id ?? null" :selectActiveQuestion="selectActiveQuestion" />
         <ViewQuizBody
             v-if="activeQuizEntry && activeQuizEntry.item === 'question'"
             :question="activeQuizEntry.question"
@@ -41,23 +36,22 @@ const paginationRef = ref<InstanceType<typeof ViewQuizPagination> | null>(null);
 /**
  * Active quiz entry. This is the quiz that is currently shown in the quiz body.
  */
-const activeQuizEntry = computed(() => loadedQuestions.value.find(q => q.isActive));
+const activeQuizEntry = computed(() => loadedQuestions.value.find((q) => q.isActive));
 
 /**
  * Convert a PocketBase question record into a QuizEntry for the quiz.
  */
 function getQuizEntryFromQuestion(questionModel: RecordModel) {
     const question = questionModel.question as string;
-    const rightOption = questionModel.rightAnswer as string;
+    const rightOption = questionModel.correctAnswer as string;
     const falseOptions = questionModel.otherAnswers as string[];
 
-    const options = [...falseOptions]
-            .sort(() => Math.random() - 0.5);
+    const options = [...falseOptions].sort(() => Math.random() - 0.5);
     const correctAnswer = Math.floor(Math.random() * (options.length + 1));
     options.splice(correctAnswer, 0, rightOption);
-            
+
     return {
-        item: 'question',
+        item: "question",
         id: questionModel.id,
         question,
         options: options.map((content, index) => content),
@@ -78,10 +72,10 @@ function updatePagination() {
  * as active. Additionally control chapter locks.
  */
 function nextQuizPage() {
-    const activeIndex = loadedQuestions.value.findIndex(q => q.isActive);
+    const activeIndex = loadedQuestions.value.findIndex((q) => q.isActive);
     if (activeIndex === -1) activeIndex = loadedQuestions.value.length - 1;
 
-    if (activeIndex < 0) throw new Error('unreachable')
+    if (activeIndex < 0) throw new Error("unreachable");
 
     // deactivate
     loadedQuestions.value[activeIndex].isActive = false;
@@ -94,8 +88,7 @@ function nextQuizPage() {
 }
 
 function selectActiveQuestion(id: string) {
-    for (const question of loadedQuestions.value)
-        question.isActive = question.id === id;
+    for (const question of loadedQuestions.value) question.isActive = question.id === id;
     return updatePagination();
 }
 
@@ -116,15 +109,14 @@ function proofAnswer(selected: number) {
 async function fetchChapter() {
     // fetch all quizzes for the current chapter
     const chapterQuestions = await pb.collection("mc_questions").getFullList({
-        requestKey: 'chapter-' + chapter.value,
+        requestKey: "chapter-" + chapter.value,
         expand: "chapter",
         filter: `chapter.index = ${chapter.value}`,
     });
 
     // load questions
-    for (const question of chapterQuestions) {
-        loadedQuestions.value.push(getQuizEntryFromQuestion(question));
-    }
+    const shuffled = chapterQuestions.map(getQuizEntryFromQuestion).sort(() => Math.random() - 0.5);
+    loadedQuestions.value.push(...shuffled);
 
     // select first
     loadedQuestions.value[0].isActive = true;
