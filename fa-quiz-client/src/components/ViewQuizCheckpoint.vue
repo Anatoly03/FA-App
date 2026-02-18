@@ -2,7 +2,23 @@
     <div class="view-quiz-checkpoint">
         <span class="subtitle"> Checkpoint </span>
         <div class="content">
-            <div class="checkpoint-badge">
+            <div class="badge">
+                <span class="data-entry">
+                    <span
+                        :class="{
+                            'green': data.correct > data.total *.6,
+                            'yellow': data.correct > data.total *.5 && data.correct <= data.total *.6,
+                            'red': data.correct <= data.total *.5
+                        }"
+                    >{{ Math.round((data.correct / data.total) * 100) }}%</span>
+                    <span class="small">Score</span>
+                </span>
+                <span class="data-entry">
+                    <span class="green">{{ data.correct }} / {{ data.total }}</span>
+                    <span class="small">Questions</span>
+                </span>
+            </div>
+            <div class="badge badge-border">
                 <Pie :data="data" />
                 {{ props.chapter }}
             </div>
@@ -61,7 +77,12 @@ const data = computed(() => {
 
     console.debug(data);
 
-    return { labels, datasets: [{ backgroundColor, data }] };
+    return {
+        labels,
+        datasets: [{ backgroundColor, data }],
+        correct: data[1],
+        total: data.reduce((a, b) => a + b, 0),
+    };
 })
 </script>
 
@@ -109,23 +130,58 @@ p:has(.gitub-link) {
         border-bottom: 1px solid #ccc;
     }
 
+    .content {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        margin: 0 16px;
+    }
+
     transition:
         width 800ms ease,
         height 800ms ease,
         margin 800ms ease;
 }
 
-.checkpoint-badge {
+.badge {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     width: 30%;
     max-width: 600px;
-    margin: auto;
     gap: 16px;
-
-    border: 1px solid #ccc;
-    border-radius: 8px;
     padding: 16px;
+
+    &.badge-border {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .data-entry {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 3em;
+        font-weight: 600;
+
+        .small {
+            font-size: 0.5em;
+            font-weight: normal;
+        }
+
+        .green {
+            color: #4caf50;
+        }
+
+        .yellow {
+            color: #ffeb3b;
+        }
+
+        .red {
+            color: #f44336;
+        }
+    }
 }
 </style>
