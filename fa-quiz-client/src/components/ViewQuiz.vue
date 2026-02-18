@@ -24,9 +24,14 @@
                 </span> 
             </a>
         </div>
+        <span class="footer" v-if="quiz.footer">{{ quiz.footer }}</span>
         <div class="pagination">
-            <button @click="showQuiz()" disabled>Back</button>
-            <button @click="showQuiz()" :disabled="!showQuizAnswer">Next</button>
+            <button @click="showQuiz()" disabled>
+                <font-awesome-icon icon="fa-regular fa-circle-left" />
+            </button>
+            <button @click="showQuiz()" :disabled="!showQuizAnswer">
+                <font-awesome-icon icon="fa-regular fa-circle-right" />
+            </button>
         </div>
     </div>
 </template>
@@ -48,6 +53,7 @@ const quiz = ref({
         { q: 3, content: "Option C" },
         { q: 4, content: "Option D" },
     ],
+    footer: null,
     answer: 2,
 });
 
@@ -57,6 +63,9 @@ const quiz = ref({
 async function fetchQuiz() {
     const response = await pb.collection("mc_questions").getFullList();
     allQuizzes.value = response;
+
+    // const singleResponse = await pb.collection("mc_questions").getOne('okdaal45c1rpzcb');
+    // allQuizzes.value = [singleResponse];
 
     showQuiz();
 }
@@ -80,9 +89,23 @@ function showQuiz() {
     const randomInsert = Math.floor(Math.random() * (otherAnswers.length + 1));
     otherAnswers.splice(randomInsert, 0, correctAnswer);
 
-    quiz.value.question = randomQuiz.question;
+    quiz.value.question = formatQuestion(randomQuiz.question);
     quiz.value.options = otherAnswers.map((content: string, q: number) => ({ q, content }));
     quiz.value.answer = randomInsert;
+    quiz.value.footer = randomQuiz.footer;
+}
+
+/**
+ * Transform the question highlighting keywords (e.g. 'not') into HTML with <b> tags.
+ */
+function formatQuestion(question: string) {
+    const keywords = ["not", "correct", "primary"];
+    let formatted = question;
+    for (const keyword of keywords) {
+        const regex = new RegExp(`\\b${keyword}\\b`, "gi");
+        formatted = formatted.replace(regex, `<mark>${keyword}</mark>`);
+    }
+    return formatted;
 }
 
 /**
@@ -96,6 +119,17 @@ function proofAnswer(selected: number) {
 // fetch a quiz on component mount
 onBeforeMount(async () => await fetchQuiz());
 </script>
+
+<style lang="scss">
+mark {
+    // padding: 2px;
+    background-color: inherit;
+    // background-color: #ffeb37;
+    // color: #000;
+    font-weight: 600;
+    text-decoration: underline;
+}
+</style>
 
 <style lang="scss" scoped>
 .view-quiz {
@@ -155,7 +189,7 @@ onBeforeMount(async () => await fetchQuiz());
             background-color: #c8e6c9;
 
             &:hover:not([disabled]) {
-                background-color: #f6f9f6;
+                background-color: #b7d5b8;
             }
         }
 
@@ -170,6 +204,10 @@ onBeforeMount(async () => await fetchQuiz());
         transition: background-color 160ms ease;
     }
 
+    .footer {
+        color: #888;
+    }
+
     .pagination {
         display: flex;
         flex-direction: row;
@@ -178,6 +216,8 @@ onBeforeMount(async () => await fetchQuiz());
 
         button {
             display: flex;
+            padding: 8px;
+            font-size: 1.2em;
             flex: 0.4;
             justify-content: center;
         }
