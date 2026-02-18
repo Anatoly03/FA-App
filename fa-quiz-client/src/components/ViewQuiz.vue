@@ -1,17 +1,18 @@
 <template>
     <div class="view-quiz">
         <ViewQuizPagination ref="paginationRef" :loadedQuestions="loadedQuestions" :activeQuestion="activeQuizEntry?.id ?? null" :selectActiveQuestion="selectActiveQuestion" />
-        <ViewQuizBody
-            v-if="activeQuizEntry && activeQuizEntry.item === 'question'"
-            :question="activeQuizEntry.question"
-            :options="activeQuizEntry.options.map((content, index) => ({ q: index, content }))"
-            :answer="activeQuizEntry.correctAnswer"
-            :footer="activeQuizEntry.footer"
-            :selectedAnswer="activeQuizEntry.selectedAnswer"
-            :proofAnswer="proofAnswer"
-            :onNext="nextQuizPage"
-        />
-        <ViewQuizLecture v-else-if="activeQuizEntry && activeQuizEntry.item === 'definition'" :subtitle="activeQuizEntry.subtitle" :content="activeQuizEntry.content" :onNext="nextQuizPage" />
+        <ViewQuizBody :onNext="nextQuizPage" :onBack="activeQuizEntryIndex > 0 && previousQuizPage">
+            <ViewQuizQuestion
+                v-if="activeQuizEntry && activeQuizEntry.item === 'question'"
+                :question="activeQuizEntry.question"
+                :options="activeQuizEntry.options.map((content, index) => ({ q: index, content }))"
+                :answer="activeQuizEntry.correctAnswer"
+                :footer="activeQuizEntry.footer"
+                :selectedAnswer="activeQuizEntry.selectedAnswer"
+                :proofAnswer="proofAnswer"
+            />
+            <ViewQuizLecture v-else-if="activeQuizEntry && activeQuizEntry.item === 'definition'" :subtitle="activeQuizEntry.subtitle" :content="activeQuizEntry.content" />
+        </ViewQuizBody>
     </div>
 </template>
 
@@ -23,6 +24,7 @@ import ViewQuizBody from "./ViewQuizBody.vue";
 import { QuizEntry } from "../quiz";
 import { RecordModel } from "pocketbase";
 import ViewQuizLecture from "./ViewQuizLecture.vue";
+import ViewQuizQuestion from "./ViewQuizQuestion.vue";
 
 /**
  * Current chapter quizzes.
@@ -39,6 +41,7 @@ const paginationRef = ref<InstanceType<typeof ViewQuizPagination> | null>(null);
  * Active quiz entry. This is the quiz that is currently shown in the quiz body.
  */
 const activeQuizEntry = computed(() => loadedQuestions.value.find((q) => q.isActive));
+const activeQuizEntryIndex = computed(() => loadedQuestions.value.findIndex((q) => q.isActive));
 
 /**
  * Convert a PocketBase question record into a QuizEntry for the quiz.
@@ -103,7 +106,7 @@ async function nextQuizPage() {
     if (activeIndex < loadedQuestions.value.length - 1) {
         // deactivate
         loadedQuestions.value[activeIndex].isActive = false;
-        
+
         // activate next
         loadedQuestions.value[activeIndex + 1].isActive = true;
         return updatePagination();
@@ -114,6 +117,30 @@ async function nextQuizPage() {
     await fetchChapter(false);
 
     nextQuizPage();
+}
+
+/**
+ * Go back in pagination. Find the current active question and set the previous
+ * one as active. Additionally control chapter locks.
+ */
+async function previousQuizPage() {
+    const activeIndex = loadedQuestions.value.findIndex((q) => q.isActive);
+    if (activeIndex === -1) throw new Error("unreachable");
+
+    if (activeIndex > 0) {
+        // deactivate
+        loadedQuestions.value[activeIndex].isActive = false;
+
+        // activate previous
+        loadedQuestions.value[activeIndex - 1].isActive = true;
+        return updatePagination();
+    }
+
+    // if no previous quiz, go to previous chapter
+    chapter.value -= 1;
+    await fetchChapter(false);
+
+    previousQuizPage();
 }
 
 function selectActiveQuestion(id: string) {
@@ -150,8 +177,7 @@ async function fetchChapter(resetActive = true) {
     });
 
     // load lectures
-    if (chapterLectures.expand.lessons && chapterLectures.expand.lessons.length > 0)
-        loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
+    if (chapterLectures.expand.lessons && chapterLectures.expand.lessons.length > 0) loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
 
     // load questions
     const shuffled = chapterQuestions.map(getQuizEntryFromQuestion).sort(() => Math.random() - 0.5);

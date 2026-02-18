@@ -1,7 +1,31 @@
 <template>
-    <div class="view-quiz-lecture">
-        <span class="subtitle" v-html="props.subtitle"></span>
-        <div class="content" v-html="props.content"></div>
+    <div class="view-quiz-question">
+        <span class="question" v-html="props.question"></span>
+        <div class="options">
+            <button
+                v-for="question in props.options"
+                :key="question.q + question.content"
+                @click="props.proofAnswer(question.q)"
+                :class="{
+                    correct: showQuizAnswer && question.q === props.answer,
+                    incorrect: showQuizAnswer && question.q !== props.answer && props.selectedAnswer === question.q,
+                }"
+                :disabled="showQuizAnswer"
+            >
+                <span class="option-selection-marker">
+                    <font-awesome-icon icon="fa-regular fa-circle-dot" v-if="showQuizAnswer && question.q == props.selectedAnswer" />
+                    <font-awesome-icon icon="fa-regular fa-circle" v-if="!showQuizAnswer || question.q != props.selectedAnswer" />
+                </span>
+                <span class="option-item">
+                    {{ question.content }}
+                </span>
+                <span class="option-correction-marker">
+                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="showQuizAnswer && question.q === props.answer" />
+                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-else-if="showQuizAnswer && question.q !== props.answer" />
+                </span> 
+            </button>
+        </div>
+        <span class="footer" v-if="props.footer">{{ props.footer }}</span>
     </div>
 </template>
 
@@ -9,8 +33,12 @@
 import { computed } from "vue";
 
 const props = defineProps<{
-    subtitle: string;
-    content: string;
+    question: string;
+    options: { q: number; content: string }[];
+    answer: number;
+    footer: string | null;
+    selectedAnswer: number | undefined;
+
     proofAnswer: (selected: number) => void;
     onNext: () => void;
     onBack: () => void;
@@ -28,43 +56,21 @@ mark {
     font-weight: 600;
     text-decoration: underline;
 }
-
-.github-link {
-    border-radius: 6px;
-    display: flex;
-    background-color: #469b46;
-    padding: 10px;
-    text-decoration: none;
-    color: white;
-
-    &:hover {
-        background-color: #70bb70;
-    }
-}
-
-p:has(.gitub-link) {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-}
 </style>
 
 <style lang="scss" scoped>
-.view-quiz-lecture {
+.view-quiz-question {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin: auto;
     gap: 16px;
 
-    .subtitle {
+    .question {
         margin-top: -25px;
         padding: 16px;
 
         border-bottom: 1px solid #ccc;
-    }
-
-    .content {
-        padding: 16px;
     }
 
     @media (max-width: 768px) {
@@ -77,12 +83,12 @@ p:has(.gitub-link) {
     }
 
     .options {
-        padding: 16px;
         display: flex;
         flex-direction: column;
-        width: 100%;
-        margin: auto;
         gap: 4px;
+        margin: 0;
+        padding: 16px;
+        box-sizing: border-box;
 
         @media (max-width: 768px) {
             gap: 8px;
@@ -108,6 +114,12 @@ p:has(.gitub-link) {
             .fa-circle-xmark {
                 color: darkred;
             }
+        }
+
+        button{
+            display: flex;
+            width: 100%;
+            box-sizing: border-box;
         }
     }
 
@@ -153,7 +165,6 @@ p:has(.gitub-link) {
     }
 
     .pagination {
-        padding: 16px;
         display: flex;
         flex-direction: row;
         gap: 8px;

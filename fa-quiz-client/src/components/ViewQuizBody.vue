@@ -1,37 +1,12 @@
 <template>
     <div class="view-quiz-body">
         <span class="triangle-pointer"></span>
-        <span v-html="props.question"></span>
-        <div class="options">
-            <button
-                v-for="question in props.options"
-                :key="question.q + question.content"
-                @click="props.proofAnswer(question.q)"
-                :class="{
-                    correct: showQuizAnswer && question.q === props.answer,
-                    incorrect: showQuizAnswer && question.q !== props.answer && props.selectedAnswer === question.q,
-                }"
-                :disabled="showQuizAnswer"
-            >
-                <span class="option-selection-marker">
-                    <font-awesome-icon icon="fa-regular fa-circle-dot" v-if="showQuizAnswer && question.q == props.selectedAnswer" />
-                    <font-awesome-icon icon="fa-regular fa-circle" v-if="!showQuizAnswer || question.q != props.selectedAnswer" />
-                </span>
-                <span class="option-item">
-                    {{ question.content }}
-                </span>
-                <span class="option-correction-marker">
-                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="showQuizAnswer && question.q === props.answer" />
-                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-else-if="showQuizAnswer && question.q !== props.answer" />
-                </span> 
-            </button>
-        </div>
-        <span class="footer" v-if="props.footer">{{ props.footer }}</span>
+        <slot></slot>
         <div class="pagination">
             <button @click="props.onBack()" :disabled="!props.onBack">
                 <font-awesome-icon icon="fa-regular fa-circle-left" />
             </button>
-            <button @click="props.onNext()" :disabled="!props.onNext || !showQuizAnswer">
+            <button @click="props.onNext()" :disabled="!props.onNext">
                 <font-awesome-icon icon="fa-regular fa-circle-right" />
             </button>
         </div>
@@ -39,8 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-
 const props = defineProps<{
     question: string;
     options: { q: number; content: string }[];
@@ -52,99 +25,6 @@ const props = defineProps<{
     onNext: () => void;
     onBack: () => void;
 }>();
-
-const showQuizAnswer = computed(() => props.selectedAnswer !== undefined);
-
-// const allQuizzes = ref<{}[]>([]);
-
-// const emit = defineEmits<{
-//     (e: "quiz-next", quiz: any): void;
-//     (e: "quiz-fetched", quiz: any): void;
-// }>();
-
-// const quiz = ref({
-//     id: 'unknown',
-//     question: "Q?",
-//     options: [
-//         { q: 1, content: "Option A" },
-//         { q: 2, content: "Option B" },
-//         { q: 3, content: "Option C" },
-//         { q: 4, content: "Option D" },
-//     ],
-//     footer: null,
-//     answer: 2,
-//     showQuizAnswer: false,
-//     selectedAnswer: undefined as number | undefined,
-// });
-
-// /**
-//  * Fetch a quiz from the API and set it to the `quiz` variable.
-//  */
-// async function fetchQuiz() {
-//     const response = await pb.collection("mc_questions").getFullList();
-//     allQuizzes.value = response;
-
-//     // const singleResponse = await pb.collection("mc_questions").getOne('okdaal45c1rpzcb');
-//     // allQuizzes.value = [singleResponse];
-
-//     showQuiz();
-// }
-
-// /**
-//  * Show random quiz from the list of quizzes fetched from the API.
-//  */
-// function showQuiz() {
-//     quiz.value.showQuizAnswer = false;
-
-//     const randomIndex = Math.floor(Math.random() * allQuizzes.value.length);
-//     const randomQuiz: any = allQuizzes.value[randomIndex];
-
-//     // deep clone of other answers so splice() does not mutate database
-//     const otherAnswers = [...randomQuiz.otherAnswers]
-//         .sort(() => Math.random() - 0.5);
-//     const correctAnswer = randomQuiz.correctAnswer;
-
-//     // add correct answer to random position in other answers
-//     // and track position
-//     const randomInsert = Math.floor(Math.random() * (otherAnswers.length + 1));
-//     otherAnswers.splice(randomInsert, 0, correctAnswer);
-
-//     quiz.value.id = randomQuiz.id;
-//     quiz.value.question = formatQuestion(randomQuiz.question);
-//     quiz.value.options = otherAnswers.map((content: string, q: number) => ({ q, content }));
-//     quiz.value.answer = randomInsert;
-//     quiz.value.footer = randomQuiz.footer;
-    
-//     // Emit quiz-next event when moving to next question
-//     emit("quiz-next", JSON.parse(JSON.stringify(quiz.value)));
-// }
-
-// /**
-//  * Transform the question highlighting keywords (e.g. 'not') into HTML with <b> tags.
-//  */
-// function formatQuestion(question: string) {
-//     const keywords = ["not", "cannot", "correct", "primary"];
-//     let formatted = question;
-//     for (const keyword of keywords) {
-//         const regex = new RegExp(`\\b${keyword}\\b`, "gi");
-//         formatted = formatted.replace(regex, `<mark>${keyword}</mark>`);
-//     }
-//     return formatted;
-// }
-
-// /**
-//  * Proof answer
-//  */
-// function proofAnswer(selected: number) {
-//     quiz.value.showQuizAnswer = true;
-//     quiz.value.selectedAnswer = selected;
-
-//     // emit quiz for pagination
-//     emit("quiz-fetched", JSON.parse(JSON.stringify(quiz.value)));
-// }
-
-// // fetch a quiz on component mount
-// onBeforeMount(async () => await fetchQuiz());
 </script>
 
 <style lang="scss">
@@ -161,7 +41,7 @@ mark {
 <style lang="scss" scoped>
 .triangle-pointer {
     position: relative;
-    top: -28px;
+    top: -12px;
 
     width: 0;
     height: 0;
@@ -185,7 +65,6 @@ mark {
 
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 16px;
 
     @media (max-width: 768px) {
         width: 80%;
@@ -276,6 +155,7 @@ mark {
         flex-direction: row;
         gap: 8px;
         justify-content: space-between;
+        padding: 16px;
 
         button {
             display: flex;
@@ -293,8 +173,8 @@ mark {
     }
 
     transition:
-        width 800ms ease,
-        height 800ms ease,
-        margin 800ms ease;
+        width 1800ms ease,
+        height 1800ms ease,
+        margin 1800ms ease;
 }
 </style>

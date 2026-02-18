@@ -7,7 +7,11 @@
                 v-for="question in props.loadedQuestions"
                 :key="question.id"
                 :data-question-id="question.id"
-                @click="() => props.selectActiveQuestion(question.id)"
+                role="button"
+                tabindex="0"
+                @click.stop="() => props.selectActiveQuestion(question.id)"
+                @keydown.enter.stop="() => props.selectActiveQuestion(question.id)"
+                @keydown.space.stop="() => props.selectActiveQuestion(question.id)"
             >
                 <div class="question" v-if="question.item=='question'">
                     <font-awesome-icon v-if="!question.selectedAnswer" icon="fa-regular fa-circle" class="selected-question" />
@@ -15,7 +19,7 @@
                     <font-awesome-icon v-else icon="fa-solid fa-circle-xmark" />
                 </div>
                 <div class="question" v-if="question.item=='definition'">
-                    <font-awesome-icon icon="fa-solid fa-book-open" />
+                    <font-awesome-icon icon="fa-regular fa-compass" />
                 </div>
             </span>
             <font-awesome-icon v-for="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]" :key="i" icon="fa-regular fa-circle" />
@@ -151,6 +155,7 @@ watch(() => props.activeQuestion, scrollToActive);
         height: 24px;
         display: inline-block;
         color: #ccc;
+        pointer-events: none;
 
         &.selected-question {
             color: black;
@@ -170,6 +175,43 @@ watch(() => props.activeQuestion, scrollToActive);
         color: #a00;
     }
 
+    .fa-cube {
+        font-size: 1.6em;
+        pointer-events: none;
+    }
+
+    .fa-compass {
+        font-size: 1.5em;
+        pointer-events: none;
+    }
+
+    .quiz-paginationentry {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        padding: 4px;
+        pointer-events: auto;
+        user-select: none;
+        transition: transform 150ms ease, opacity 150ms ease;
+        
+        &:hover {
+            transform: scale(1.15);
+            opacity: 0.8;
+        }
+        
+        &:active {
+            transform: scale(0.95);
+        }
+        
+        &:focus-visible {
+            outline: 2px solid #333;
+            outline-offset: 2px;
+            border-radius: 50%;
+        }
+    }
+
     // Hide scrollbar
     &::-webkit-scrollbar {
         display: none;
@@ -183,8 +225,8 @@ watch(() => props.activeQuestion, scrollToActive);
         align-items: center;
         width: 24px;
         height: 24px;
-        // display: inline-block;
         color: black;
+        pointer-events: none;
         
         @media (max-width: 768px) {
             width: 20px;
@@ -192,9 +234,9 @@ watch(() => props.activeQuestion, scrollToActive);
         }
     }
 
-    .question:has(.fa-book-open) {
-        background-color: #ccc;
-        border-radius: 50%;
-    }
+    // .question:has(.fa-book-open) {
+    //     background-color: #ccc;
+    //     border-radius: 50%;
+    // }
 }
 </style>
