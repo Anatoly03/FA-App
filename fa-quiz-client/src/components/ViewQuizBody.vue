@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import pb from "../service/pocketbase";
-import { onBeforeMount, onMounted, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 
 const allQuizzes = ref<{}[]>([]);
 
@@ -60,6 +60,8 @@ const quiz = ref({
     ],
     footer: null,
     answer: 2,
+    showQuizAnswer: false,
+    selectedAnswer: undefined as number | undefined,
 });
 
 /**
@@ -102,10 +104,6 @@ function showQuiz() {
     
     // Emit quiz-next event when moving to next question
     emit("quiz-next", JSON.parse(JSON.stringify(quiz.value)));
-// }
-    quiz.value.options = otherAnswers.map((content: string, q: number) => ({ q, content }));
-    quiz.value.answer = randomInsert;
-    quiz.value.footer = randomQuiz.footer;
 }
 
 /**
