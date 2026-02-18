@@ -12,7 +12,7 @@
                 :proofAnswer="proofAnswer"
             />
             <ViewQuizLecture v-else-if="activeQuizEntry && activeQuizEntry.item === 'definition'" :subtitle="activeQuizEntry.subtitle" :content="activeQuizEntry.content" />
-            <ViewQuizCheckpoint v-else-if="activeQuizEntry && activeQuizEntry.item === 'chapter-finish'" :chapter="activeQuizEntry.title" />
+            <ViewQuizCheckpoint v-else-if="activeQuizEntry && activeQuizEntry.item === 'chapter-finish'" :chapter="activeQuizEntry.title" :chapterIndex="activeQuizEntry.chapterIndex" :fullData="loadedQuestions" />
         </ViewQuizBody>
     </div>
 </template>
@@ -50,7 +50,7 @@ const activeQuizEntryIndex = computed(() => loadedQuestions.value.findIndex((q) 
 /**
  * Convert a PocketBase question record into a QuizEntry for the quiz.
  */
-function getQuizEntryFromQuestion(questionModel: RecordModel) {
+function getQuizEntryFromQuestion(questionModel: RecordModel, chapterIndex: number) {
     const question = questionModel.question as string;
     const rightOption = questionModel.correctAnswer as string;
     const falseOptions = questionModel.otherAnswers as string[];
@@ -62,6 +62,7 @@ function getQuizEntryFromQuestion(questionModel: RecordModel) {
     return {
         item: "question",
         id: questionModel.id,
+        chapterIndex,
         question,
         options: options.map((content, index) => content),
         footer: questionModel.footer,
@@ -69,6 +70,10 @@ function getQuizEntryFromQuestion(questionModel: RecordModel) {
         showQuizAnswer: false,
         selectedAnswer: undefined,
         isActive: false,
+        stats: {
+            tries: 0,
+            triesWrong: 0,
+        },
     } as QuizEntry;
 }
 
@@ -91,7 +96,7 @@ function getQuizEntryFromLecture(lectureModel: RecordModel) {
 /**
  * Convert a PocketBase lecture record into a QuizEntry for the quiz.
  */
-function getQuizEntryFromChapterFinish(chapterModel: RecordModel) {
+function getQuizEntryFromChapterFinish(chapterModel: RecordModel, chapterIndex: number) {
     const title = chapterModel.title as string;
 
     return {
@@ -99,6 +104,7 @@ function getQuizEntryFromChapterFinish(chapterModel: RecordModel) {
         id: chapterModel.id,
         isActive: false,
         title,
+        chapterIndex,
     } as QuizEntry;
 }
 
@@ -176,6 +182,12 @@ function proofAnswer(selected: number) {
 
     activeQuizEntry.value.selectedAnswer = selected;
     activeQuizEntry.value.showQuizAnswer = true;
+
+    // record statistics
+    activeQuizEntry.value.stats.tries += 1;
+    if (selected !== activeQuizEntry.value.correctAnswer) {
+        activeQuizEntry.value.stats.triesWrong += 1;
+    }
 }
 
 /**
@@ -201,11 +213,11 @@ async function fetchChapter(resetActive = true) {
         if (chapterLectures.expand.lessons && chapterLectures.expand.lessons.length > 0) loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
 
         // load questions
-        const shuffled = chapterQuestions.map(getQuizEntryFromQuestion).sort(() => Math.random() - 0.5);
+        const shuffled = chapterQuestions.map(q => getQuizEntryFromQuestion(q, chapter.value)).sort(() => Math.random() - 0.5);
         loadedQuestions.value.push(...shuffled);
 
         // load checkpoint (new chapter announce)
-        loadedQuestions.value.push(getQuizEntryFromChapterFinish(chapterLectures));
+        loadedQuestions.value.push(getQuizEntryFromChapterFinish(chapterLectures, chapter.value));
 
         // select first
         if (resetActive) {

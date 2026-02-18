@@ -11,31 +11,58 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
 import { Pie } from "vue-chartjs";
+import { QuizEntry } from "../quiz";
 
 ChartJS.register(ArcElement, Tooltip);
 
-const data = {
-    labels: ["VueJs", "EmberJs", "ReactJs", "AngularJs"],
-    datasets: [
-        {
-            backgroundColor: ["#41B883", "#E46651", "#00D8FF", "#DD1B16"],
-            data: [40, 20, 80, 10],
-        },
-    ],
-};
-
 const props = defineProps<{
+    fullData: QuizEntry[];
     chapter: string;
+    chapterIndex: number;
     content: string;
     proofAnswer: (selected: number) => void;
     onNext: () => void;
     onBack: () => void;
 }>();
 
-const showQuizAnswer = computed(() => props.selectedAnswer !== undefined);
+// placeholder data
+const data = computed(() => {
+    const labels = ["Skipped", "Correct", "Incorrect", "Incorrect (even with >2 tries)"];
+    const data = [0, 0, 0, 0];
+    const backgroundColor = ["#aaa", "#4caf50", "#f44336", "#ff9800", "#9c27b0"];
+
+    console.debug(props.fullData);
+
+    props.fullData.filter(console.log)
+
+    const questions = props.fullData.filter((q) => q.item == "question" && q.chapterIndex == props.chapterIndex) as (QuizEntry & { item: "question" })[];
+
+    console.warn(questions.map(q => ({
+        stats: q.stats,
+        quest: q.question,
+    })))
+
+    for (const q of questions) {
+        console.log(q.stats);
+
+        if (q.selectedAnswer === undefined) {
+            data[0] += 1;
+        } else if (q.stats.triesWrong > 1) {
+            data[3] += 1;
+        } else if (q.stats.triesWrong === 1) {
+            data[2] += 1;
+        } else {
+            data[1] += 1;
+        }
+    }
+
+    console.debug(data);
+
+    return { labels, datasets: [{ backgroundColor, data }] };
+})
 </script>
 
 <style lang="scss">

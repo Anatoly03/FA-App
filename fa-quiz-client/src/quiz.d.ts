@@ -16,6 +16,11 @@ export type QuizEntry =
           id: string;
 
           /**
+           * @description this quiz belongs to chapter ...
+           */
+          chapterIndex: number;
+
+          /**
            * @pocketbase `mc_questions.question`
            */
           question: string;
@@ -36,6 +41,14 @@ export type QuizEntry =
            * @description if the quiz has been attempted, which answer if yes?
            */
           selectedAnswer: number | undefined;
+
+          /**
+           * @description statistics for the question, only available after quiz completion
+           */
+          stats: {
+              tries: number;
+              triesWrong: number;
+          };
       }
     | {
           /**
@@ -78,6 +91,11 @@ export type QuizEntry =
            * @pocketbase `lecture.id`
            */
           id: string;
+
+          /**
+           * @description this quiz belongs to chapter ...
+           */
+          chapterIndex: number;
 
           /**
            * @pocketbase `chapters.title`
