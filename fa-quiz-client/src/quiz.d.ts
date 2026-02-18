@@ -40,12 +40,13 @@ export type QuizEntry =
           /**
            * @description if the quiz has been attempted, which answer if yes?
            */
-          selectedAnswer: number | undefined;
+          selectedAnswers: number[];
 
           /**
            * @description statistics for the question, only available after quiz completion
            */
           stats: {
+              solved: boolean;
               tries: number;
               triesWrong: number;
           };

@@ -21,7 +21,7 @@ const props = defineProps<{
     options: { q: number; content: string }[];
     answer: number;
     footer: string | null;
-    selectedAnswer: number | undefined;
+    selectedAnswers: number[];
 
     proofAnswer: (selected: number) => void;
     onNext: () => void;

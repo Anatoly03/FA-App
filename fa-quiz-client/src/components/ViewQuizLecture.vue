@@ -16,7 +16,7 @@ const props = defineProps<{
     onBack: () => void;
 }>();
 
-const showQuizAnswer = computed(() => props.selectedAnswer !== undefined);
+const showQuizAnswer = computed(() => props.selectedAnswers.length > 0);
 </script>
 
 <style lang="scss">

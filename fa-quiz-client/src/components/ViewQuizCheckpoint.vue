@@ -46,9 +46,9 @@ const props = defineProps<{
 
 // placeholder data
 const data = computed(() => {
-    const labels = ["Skipped", "Correct", "Incorrect", "Incorrect (even with >2 tries)"];
-    const data = [0, 0, 0, 0];
-    const backgroundColor = ["#aaa", "#4caf50", "#f44336", "#ff9800", "#9c27b0"];
+    const labels = ["Skipped", "Correct", "Incorrect", "Incorrect (even with >2 tries)", "Incorrect (unsolved)"];
+    const data = [0, 0, 0, 0, 0];
+    const backgroundColor = ["#aaa", "#4caf50", "#f44336", "#c41336", "#000"];
 
     console.debug(props.fullData);
 
@@ -64,9 +64,11 @@ const data = computed(() => {
     for (const q of questions) {
         console.log(q.stats);
 
-        if (q.selectedAnswer === undefined) {
+        if (q.selectedAnswers.length === 0) {
             data[0] += 1;
-        } else if (q.stats.triesWrong > 1) {
+        } else if (!q.stats.solved) {
+            data[4] += 1;
+        } if (q.stats.triesWrong > 1) {
             data[3] += 1;
         } else if (q.stats.triesWrong === 1) {
             data[2] += 1;
@@ -120,6 +122,7 @@ p:has(.gitub-link) {
 .view-quiz-checkpoint {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
     gap: 16px;
 

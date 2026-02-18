@@ -1,27 +1,27 @@
 <template>
     <div class="view-quiz-question">
-        <span class="question" v-html="props.question"></span>
+        <span class="question" v-html="highlightWords(props.question)"></span>
         <div class="options">
             <button
                 v-for="question in props.options"
                 :key="question.q + question.content"
                 @click="props.proofAnswer(question.q)"
                 :class="{
-                    correct: showQuizAnswer && question.q === props.answer,
-                    incorrect: showQuizAnswer && question.q !== props.answer && props.selectedAnswer === question.q,
+                    correct: props.questionModel.selectedAnswers.includes(question.q) && question.q === props.answer,
+                    incorrect: props.questionModel.selectedAnswers.includes(question.q) && question.q !== props.answer,
                 }"
-                :disabled="showQuizAnswer"
+                :disabled="props.questionModel.stats.solved"
             >
                 <span class="option-selection-marker">
-                    <font-awesome-icon icon="fa-regular fa-circle-dot" v-if="showQuizAnswer && question.q == props.selectedAnswer" />
-                    <font-awesome-icon icon="fa-regular fa-circle" v-if="!showQuizAnswer || question.q != props.selectedAnswer" />
+                    <font-awesome-icon icon="fa-regular fa-circle-dot" v-if="props.questionModel.selectedAnswers.includes(question.q)" />
+                    <font-awesome-icon icon="fa-regular fa-circle" v-else />
                 </span>
                 <span class="option-item">
                     {{ question.content }}
                 </span>
                 <span class="option-correction-marker">
-                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="showQuizAnswer && question.q === props.answer" />
-                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-else-if="showQuizAnswer && question.q !== props.answer" />
+                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="props.questionModel.selectedAnswers.includes(question.q) && question.q === props.answer" />
+                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-else-if="props.questionModel.selectedAnswers.includes(question.q) && question.q !== props.answer" />
                 </span> 
             </button>
         </div>
@@ -30,9 +30,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { QuizEntry } from "../quiz";
+
+function highlightWords(text: string) {
+    const wordsToHighlight = ["not", "cannot", "primary", "correct", "incorrect"];
+    let highlightedText = text;
+
+    for (const word of wordsToHighlight) {
+        const regex = new RegExp(`(${word})`, "gi");
+        highlightedText = highlightedText.replace(regex, `<mark>$1</mark>`);
+    }
+
+    return highlightedText;
+}
 
 const props = defineProps<{
+    questionModel: QuizEntry & { item: "question" };
     question: string;
     options: { q: number; content: string }[];
     answer: number;
@@ -43,8 +56,6 @@ const props = defineProps<{
     onNext: () => void;
     onBack: () => void;
 }>();
-
-const showQuizAnswer = computed(() => props.selectedAnswer !== undefined);
 </script>
 
 <style lang="scss">

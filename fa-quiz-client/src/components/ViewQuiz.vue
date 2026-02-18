@@ -4,11 +4,12 @@
         <ViewQuizBody :onNext="nextQuestionExists && nextQuizPage" :onBack="activeQuizEntryIndex > 0 && previousQuizPage">
             <ViewQuizQuestion
                 v-if="activeQuizEntry && activeQuizEntry.item === 'question'"
+                :questionModel="activeQuizEntry"
                 :question="activeQuizEntry.question"
                 :options="activeQuizEntry.options.map((content, index) => ({ q: index, content }))"
                 :answer="activeQuizEntry.correctAnswer"
                 :footer="activeQuizEntry.footer"
-                :selectedAnswer="activeQuizEntry.selectedAnswer"
+                :selectedAnswers="activeQuizEntry.selectedAnswers"
                 :proofAnswer="proofAnswer"
             />
             <ViewQuizLecture v-else-if="activeQuizEntry && activeQuizEntry.item === 'definition'" :subtitle="activeQuizEntry.subtitle" :content="activeQuizEntry.content" />
@@ -68,9 +69,10 @@ function getQuizEntryFromQuestion(questionModel: RecordModel, chapterIndex: numb
         footer: questionModel.footer,
         correctAnswer,
         showQuizAnswer: false,
-        selectedAnswer: undefined,
+        selectedAnswers: [],
         isActive: false,
         stats: {
+            solved: false,
             tries: 0,
             triesWrong: 0,
         },
@@ -180,12 +182,16 @@ function selectActiveQuestion(id: string) {
 function proofAnswer(selected: number) {
     if (!activeQuizEntry.value) return;
 
-    activeQuizEntry.value.selectedAnswer = selected;
+    console.warn('Selected answer', selected, 'for question', activeQuizEntry.value.question);
+
+    activeQuizEntry.value.selectedAnswers.push(selected);
     activeQuizEntry.value.showQuizAnswer = true;
 
     // record statistics
     activeQuizEntry.value.stats.tries += 1;
-    if (selected !== activeQuizEntry.value.correctAnswer) {
+    if (selected === activeQuizEntry.value.correctAnswer) {
+        activeQuizEntry.value.stats.solved = true;
+    } else {
         activeQuizEntry.value.stats.triesWrong += 1;
     }
 }
