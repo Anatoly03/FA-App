@@ -110,7 +110,7 @@ function showQuiz() {
  * Transform the question highlighting keywords (e.g. 'not') into HTML with <b> tags.
  */
 function formatQuestion(question: string) {
-    const keywords = ["not", "correct", "primary"];
+    const keywords = ["not", "cannot", "correct", "primary"];
     let formatted = question;
     for (const keyword of keywords) {
         const regex = new RegExp(`\\b${keyword}\\b`, "gi");
