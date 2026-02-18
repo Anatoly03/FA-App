@@ -8,7 +8,6 @@
                 :key="question.id"
                 :data-question-id="question.id"
                 role="button"
-                tabindex="0"
                 @click.stop="() => props.selectActiveQuestion(question.id)"
                 @keydown.enter.stop="() => props.selectActiveQuestion(question.id)"
                 @keydown.space.stop="() => props.selectActiveQuestion(question.id)"
@@ -20,6 +19,9 @@
                 </div>
                 <div class="question" v-if="question.item=='definition'">
                     <font-awesome-icon icon="fa-regular fa-compass" />
+                </div>
+                <div class="question" v-if="question.item=='chapter-finish'">
+                    <font-awesome-icon icon="fa-solid fa-lock" />
                 </div>
             </span>
             <font-awesome-icon v-for="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]" :key="i" icon="fa-regular fa-circle" />

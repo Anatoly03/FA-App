@@ -62,4 +62,25 @@ export type QuizEntry =
            * @pocketbase `lecture.content`
            */
           content: string;
+      }
+    | {
+          /**
+           * @description entry type for quiz item
+           */
+          item: "chapter-finish";
+
+          /**
+           * @description whether the definition is the current active quiz entry
+           */
+          isActive: boolean;
+
+          /**
+           * @pocketbase `lecture.id`
+           */
+          id: string;
+
+          /**
+           * @pocketbase `chapters.title`
+           */
+          title: string;
       };

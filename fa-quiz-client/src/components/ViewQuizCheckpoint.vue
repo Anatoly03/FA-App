@@ -1,55 +1,21 @@
 <template>
-    <div class="view-quiz-body">
-        <span class="triangle-pointer"></span>
-        <slot></slot>
-        <div class="pagination">
-            <button @click="props.onBack()" :disabled="!props.onBack">
-                <font-awesome-icon icon="fa-regular fa-circle-left" />
-            </button>
-            <button @click="props.onNext()" :disabled="!props.onNext">
-                <font-awesome-icon icon="fa-regular fa-circle-right" />
-            </button>
-        </div>
+    <div class="view-quiz-checkpoint">
+        <span class="subtitle" v-html="props.title"></span>
     </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue";
+import { computed } from "vue";
 
 const props = defineProps<{
-    question: string;
-    options: { q: number; content: string }[];
-    answer: number;
-    footer: string | null;
-    selectedAnswer: number | undefined;
-
+    title: string;
+    content: string;
     proofAnswer: (selected: number) => void;
     onNext: () => void;
     onBack: () => void;
 }>();
 
-function handleKeyboard(event: KeyboardEvent) {
-    switch (event.key) {
-        case "ArrowLeft":
-        case 'a':
-            event.preventDefault();
-            props.onBack();
-            break;
-        case "ArrowRight":
-        case 'd':
-            event.preventDefault();
-            props.onNext();
-            break;
-    }
-}
-
-onMounted(() => {
-    document.addEventListener("keydown", handleKeyboard);
-});
-
-onUnmounted(() => {
-    document.removeEventListener("keydown", handleKeyboard);
-});
+const showQuizAnswer = computed(() => props.selectedAnswer !== undefined);
 </script>
 
 <style lang="scss">
@@ -61,35 +27,44 @@ mark {
     font-weight: 600;
     text-decoration: underline;
 }
-</style>
 
-<style lang="scss" scoped>
-.triangle-pointer {
-    position: relative;
-    top: -12px;
+.github-link {
+    border-radius: 6px;
+    display: flex;
+    background-color: #469b46;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
 
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 12px solid #bbb;
-    margin: auto;
-
-    @media (max-width: 768px) {
-        top: -24px;
+    &:hover {
+        background-color: #70bb70;
     }
 }
 
-.view-quiz-body {
+p:has(.gitub-link) {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+</style>
+
+<style lang="scss" scoped>
+.view-quiz-checkpoint {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 600px;
-    margin: auto;
     gap: 16px;
 
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    .subtitle {
+        margin-top: -25px;
+        padding: 16px;
+
+        border-bottom: 1px solid #ccc;
+    }
+
+    .content {
+        padding: 16px;
+    }
 
     @media (max-width: 768px) {
         width: 80%;
@@ -101,6 +76,7 @@ mark {
     }
 
     .options {
+        padding: 16px;
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -176,11 +152,11 @@ mark {
     }
 
     .pagination {
+        padding: 16px;
         display: flex;
         flex-direction: row;
         gap: 8px;
         justify-content: space-between;
-        padding: 16px;
 
         button {
             display: flex;
@@ -198,8 +174,8 @@ mark {
     }
 
     transition:
-        width 1800ms ease,
-        height 1800ms ease,
-        margin 1800ms ease;
+        width 800ms ease,
+        height 800ms ease,
+        margin 800ms ease;
 }
 </style>

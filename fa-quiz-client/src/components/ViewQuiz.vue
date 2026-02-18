@@ -12,6 +12,7 @@
                 :proofAnswer="proofAnswer"
             />
             <ViewQuizLecture v-else-if="activeQuizEntry && activeQuizEntry.item === 'definition'" :subtitle="activeQuizEntry.subtitle" :content="activeQuizEntry.content" />
+            <ViewQuizCheckpoint v-else-if="activeQuizEntry && activeQuizEntry.item === 'chapter-finish'" :chapter="activeQuizEntry.title" />
         </ViewQuizBody>
     </div>
 </template>
@@ -25,11 +26,13 @@ import { QuizEntry } from "../quiz";
 import { RecordModel } from "pocketbase";
 import ViewQuizLecture from "./ViewQuizLecture.vue";
 import ViewQuizQuestion from "./ViewQuizQuestion.vue";
+import ViewQuizCheckpoint from "./ViewQuizCheckpoint.vue";
 
 /**
  * Current chapter quizzes.
  */
 const chapter = ref(0);
+const chapterModel = ref<RecordModel | null>(null);
 
 /**
  * Already finished quiz answers will be added to pagination.
@@ -76,14 +79,26 @@ function getQuizEntryFromLecture(lectureModel: RecordModel) {
     const subtitle = lectureModel.subtitle as string;
     const content = lectureModel.content as string;
 
-    console.debug(lectureModel);
-
     return {
         item: "definition",
         id: lectureModel.id,
         isActive: false,
         subtitle,
         content,
+    } as QuizEntry;
+}
+
+/**
+ * Convert a PocketBase lecture record into a QuizEntry for the quiz.
+ */
+function getQuizEntryFromChapterFinish(chapterModel: RecordModel) {
+    const title = chapterModel.title as string;
+
+    return {
+        item: "chapter-finish",
+        id: chapterModel.id,
+        isActive: false,
+        title,
     } as QuizEntry;
 }
 
@@ -173,6 +188,7 @@ async function fetchChapter(resetActive = true) {
             requestKey: "chapter-" + chapter.value,
             expand: "lessons",
         });
+        chapterModel.value = chapterLectures;
 
         // fetch all quizzes for the current chapter
         const chapterQuestions = await pb.collection("mc_questions").getFullList({
@@ -189,7 +205,7 @@ async function fetchChapter(resetActive = true) {
         loadedQuestions.value.push(...shuffled);
 
         // load checkpoint (new chapter announce)
-
+        loadedQuestions.value.push(getQuizEntryFromChapterFinish(chapterLectures));
 
         // select first
         if (resetActive) {
