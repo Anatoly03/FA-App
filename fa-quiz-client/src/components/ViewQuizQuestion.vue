@@ -50,11 +50,8 @@ const props = defineProps<{
     options: { q: number; content: string }[];
     answer: number;
     footer: string | null;
-    selectedAnswer: number | undefined;
 
     proofAnswer: (selected: number) => void;
-    onNext: () => void;
-    onBack: () => void;
 }>();
 </script>
 

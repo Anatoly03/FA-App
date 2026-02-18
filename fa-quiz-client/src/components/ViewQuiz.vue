@@ -182,8 +182,6 @@ function selectActiveQuestion(id: string) {
 function proofAnswer(selected: number) {
     if (!activeQuizEntry.value) return;
 
-    console.warn('Selected answer', selected, 'for question', activeQuizEntry.value.question);
-
     activeQuizEntry.value.selectedAnswers.push(selected);
     activeQuizEntry.value.showQuizAnswer = true;
 

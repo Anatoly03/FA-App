@@ -11,9 +11,6 @@ import { computed } from "vue";
 const props = defineProps<{
     subtitle: string;
     content: string;
-    proofAnswer: (selected: number) => void;
-    onNext: () => void;
-    onBack: () => void;
 }>();
 
 const showQuizAnswer = computed(() => props.selectedAnswers.length > 0);

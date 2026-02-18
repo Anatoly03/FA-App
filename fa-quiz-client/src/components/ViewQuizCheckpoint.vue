@@ -50,25 +50,14 @@ const data = computed(() => {
     const data = [0, 0, 0, 0, 0];
     const backgroundColor = ["#aaa", "#4caf50", "#f44336", "#c41336", "#000"];
 
-    console.debug(props.fullData);
-
-    props.fullData.filter(console.log)
-
     const questions = props.fullData.filter((q) => q.item == "question" && q.chapterIndex == props.chapterIndex) as (QuizEntry & { item: "question" })[];
 
-    console.warn(questions.map(q => ({
-        stats: q.stats,
-        quest: q.question,
-    })))
-
     for (const q of questions) {
-        console.log(q.stats);
-
-        if (q.selectedAnswers.length === 0) {
+        if (q.selectedAnswers.length == 0) {
             data[0] += 1;
         } else if (!q.stats.solved) {
             data[4] += 1;
-        } if (q.stats.triesWrong > 1) {
+        } else if (q.stats.triesWrong > 1) {
             data[3] += 1;
         } else if (q.stats.triesWrong === 1) {
             data[2] += 1;
@@ -77,13 +66,11 @@ const data = computed(() => {
         }
     }
 
-    console.debug(data);
-
     return {
         labels,
         datasets: [{ backgroundColor, data }],
         correct: data[1],
-        total: data.reduce((a, b) => a + b, 0),
+        total: questions.length,
     };
 })
 </script>
@@ -179,7 +166,7 @@ p:has(.gitub-link) {
         }
 
         .yellow {
-            color: #ffeb3b;
+            color: #d9ce67;
         }
 
         .red {
