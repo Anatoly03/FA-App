@@ -28,6 +28,20 @@ func UploadData(e *core.RecordEvent) error {
 		return err
 	}
 
+
+	// // remove fields 'created' and 'updated' to avoid unnecessary diffs in git
+	// // we need to map records to []map[string]any to remove these fields, because Record struct has them as time.Time and they will be always different
+	// var mappedRecords []map[string]any
+	// for _, record := range records {
+	// 	mappedRecord := record.Expand()
+
+	// 	delete(mappedRecord, "created")
+	// 	delete(mappedRecord, "updated")
+
+	// 	mappedRecords = append(mappedRecords, mappedRecord)
+	// }
+
+	// jsonData, err := json.MarshalIndent(mappedRecords, "", "  ")
 	jsonData, err := json.MarshalIndent(records, "", "  ")
 
 	filePath := "pb_sync/" + e.Record.Collection().Name + ".json"

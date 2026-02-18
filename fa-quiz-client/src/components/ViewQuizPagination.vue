@@ -13,7 +13,7 @@
                 @keydown.space.stop="() => props.selectActiveQuestion(question.id)"
             >
                 <div class="question" v-if="question.item=='question'">
-                    <font-awesome-icon v-if="!question.stats.solved && question.stats.triesWrong === 0" icon="fa-regular fa-circle" />
+                    <font-awesome-icon v-if="!question.stats.solved && question.stats.triesWrong === 0" icon="fa-regular fa-circle" class="question" />
                     <font-awesome-icon v-else-if="question.stats.triesWrong === 0" icon="fa-solid fa-circle-check" />
                     <font-awesome-icon v-else icon="fa-solid fa-circle-xmark" />
                 </div>
