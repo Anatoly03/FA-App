@@ -10,11 +10,13 @@
                 @click="() => props.selectActiveQuestion(question.id)"
             >
                 <div class="question" v-if="question.item=='question'">
-                    <font-awesome-icon v-if="!question.showQuizAnswer" icon="fa-regular fa-circle" class="selected-question" />
+                    <font-awesome-icon v-if="!question.selectedAnswer" icon="fa-regular fa-circle" class="selected-question" />
                     <font-awesome-icon v-else-if="question.selectedAnswer === question.correctAnswer" icon="fa-solid fa-circle-check" />
                     <font-awesome-icon v-else icon="fa-solid fa-circle-xmark" />
                 </div>
-                <!-- if definition/ explanation slide -->
+                <div class="question" v-if="question.item=='definition'">
+                    <font-awesome-icon icon="fa-solid fa-book-open" />
+                </div>
             </span>
             <font-awesome-icon v-for="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]" :key="i" icon="fa-regular fa-circle" />
             <span class="width-filler-sm"></span>
@@ -176,15 +178,23 @@ watch(() => props.activeQuestion, scrollToActive);
     scrollbar-width: none;
 
     .question {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 24px;
         height: 24px;
-        display: inline-block;
-        color: #ccc;
+        // display: inline-block;
+        color: black;
         
         @media (max-width: 768px) {
             width: 20px;
             height: 20px;
         }
+    }
+
+    .question:has(.fa-book-open) {
+        background-color: #ccc;
+        border-radius: 50%;
     }
 }
 </style>

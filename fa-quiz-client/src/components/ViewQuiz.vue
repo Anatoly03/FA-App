@@ -11,6 +11,7 @@
             :proofAnswer="proofAnswer"
             :onNext="nextQuizPage"
         />
+        <ViewQuizLecture v-else-if="activeQuizEntry && activeQuizEntry.item === 'definition'" :subtitle="activeQuizEntry.subtitle" :content="activeQuizEntry.content" :onNext="nextQuizPage" />
     </div>
 </template>
 
@@ -21,6 +22,7 @@ import ViewQuizPagination from "./ViewQuizPagination.vue";
 import ViewQuizBody from "./ViewQuizBody.vue";
 import { QuizEntry } from "../quiz";
 import { RecordModel } from "pocketbase";
+import ViewQuizLecture from "./ViewQuizLecture.vue";
 
 /**
  * Current chapter quizzes.
@@ -63,6 +65,27 @@ function getQuizEntryFromQuestion(questionModel: RecordModel) {
     } as QuizEntry;
 }
 
+/**
+ * Convert a PocketBase lecture record into a QuizEntry for the quiz.
+ */
+function getQuizEntryFromLecture(lectureModel: RecordModel) {
+    const subtitle = lectureModel.subtitle as string;
+    const content = lectureModel.content as string;
+
+    console.debug(lectureModel);
+
+    return {
+        item: "definition",
+        id: lectureModel.id,
+        isActive: false,
+        subtitle,
+        content,
+    } as QuizEntry;
+}
+
+/**
+ * Re-scroll pagination to active quiz entry.
+ */
 function updatePagination() {
     paginationRef.value?.scrollToActive();
 }
@@ -107,12 +130,23 @@ function proofAnswer(selected: number) {
  * Fetch the next quiz from the API and set it to the `quiz` variable.
  */
 async function fetchChapter() {
+    // fetch all lectures for the current chapter
+    const chapterLectures = await pb.collection("chapters").getFirstListItem(`index = ${chapter.value}`, {
+        requestKey: "chapter-" + chapter.value,
+        expand: "lessons",
+    });
+
     // fetch all quizzes for the current chapter
     const chapterQuestions = await pb.collection("mc_questions").getFullList({
-        requestKey: "chapter-" + chapter.value,
+        requestKey: "questions-chapter-" + chapter.value,
         expand: "chapter",
         filter: `chapter.index = ${chapter.value}`,
     });
+
+    console.debug(chapterLectures);
+
+    // load lectures
+    loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
 
     // load questions
     const shuffled = chapterQuestions.map(getQuizEntryFromQuestion).sort(() => Math.random() - 0.5);

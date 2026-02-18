@@ -39,8 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import pb from "../service/pocketbase";
-import { computed, onBeforeMount, ref } from "vue";
+import { computed } from "vue";
 
 const props = defineProps<{
     question: string;

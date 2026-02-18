@@ -49,7 +49,17 @@ export type QuizEntry =
           isActive: boolean;
 
           /**
-           * @pocketbase `definitions.id`
+           * @pocketbase `lecture.id`
            */
           id: string;
+
+          /**
+           * @pocketbase `lecture.title`
+           */
+          subtitle: string;
+
+          /**
+           * @pocketbase `lecture.content`
+           */
+          content: string;
       };
