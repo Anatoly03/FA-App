@@ -23,7 +23,7 @@ const previousQuestions = ref<any[]>([]);
 .view-quiz {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 100%;
     margin: auto;
 
     transition:

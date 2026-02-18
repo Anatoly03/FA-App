@@ -51,6 +51,7 @@ watch(() => props.modelValue, scrollToActive, { deep: true });
     position: relative;
     margin: auto;
     max-width: 600px;
+    width: 100%;
 
     // Gradient overlays at edges
     &::before,
@@ -73,6 +74,19 @@ watch(() => props.modelValue, scrollToActive, { deep: true });
         right: 0;
         background: linear-gradient(to left, #eee, transparent);
     }
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+        
+        &::before,
+        &::after {
+            width: 40px;
+        }
+    }
+
+    // @media (max-width: 400px) {
+    //     display: none;
+    // }
 }
 
 .view-quiz-pagination {
@@ -84,12 +98,25 @@ watch(() => props.modelValue, scrollToActive, { deep: true });
     overflow-y: hidden;
     scroll-behavior: smooth;
 
+    @media (max-width: 768px) {
+        padding: 12px 8px;
+        gap: 6px;
+    }
+
     .width-filler {
-        flex: 0 0 280px;
+        flex: 0 0 calc(50% - 20px);
+        
+        @media (max-width: 768px) {
+            flex: 0 0 calc(50vw - 24px);
+        }
     }
 
     .width-filler-sm {
-        flex: 0 0 250px;
+        flex: 0 0 calc(50% - 12px);
+        
+        @media (max-width: 768px) {
+            flex: 0 0 calc(50vw - 20px);
+        }
     }
 
     .fa-circle,
@@ -102,6 +129,11 @@ watch(() => props.modelValue, scrollToActive, { deep: true });
 
         &.selected-question {
             color: black;
+        }
+        
+        @media (max-width: 768px) {
+            width: 20px;
+            height: 20px;
         }
     }
 
@@ -125,6 +157,11 @@ watch(() => props.modelValue, scrollToActive, { deep: true });
         height: 24px;
         display: inline-block;
         color: #ccc;
+        
+        @media (max-width: 768px) {
+            width: 20px;
+            height: 20px;
+        }
     }
 }
 </style>

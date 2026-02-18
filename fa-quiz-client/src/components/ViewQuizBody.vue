@@ -156,12 +156,17 @@ mark {
     border-right: 12px solid transparent;
     border-bottom: 12px solid #bbb;
     margin: auto;
+
+    @media (max-width: 768px) {
+        top: -24px;
+    }
 }
 
 .view-quiz-body {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     margin: auto;
     gap: 16px;
 
@@ -169,12 +174,25 @@ mark {
     border-radius: 8px;
     padding: 16px;
 
+    @media (max-width: 768px) {
+        width: 80%;
+        margin: auto;
+        padding: 12px;
+        gap: 12px;
+        border-radius: 6px;
+        font-size: 16px; // Prevent iOS text zoom
+    }
+
     .options {
         display: flex;
         flex-direction: column;
         width: 100%;
         margin: auto;
         gap: 4px;
+
+        @media (max-width: 768px) {
+            gap: 8px;
+        }
 
         .option-item {
             display: flex;
@@ -206,6 +224,12 @@ mark {
         border-radius: 4px;
         padding: 4px;
         background-color: #eee;
+
+        @media (max-width: 768px) {
+            padding: 8px;
+            min-height: 44px; // Minimum touch target size
+            align-items: center;
+        }
 
         &:hover:not([disabled]) {
             background-color: #ddd;
@@ -246,6 +270,12 @@ mark {
             font-size: 1.2em;
             flex: 0.4;
             justify-content: center;
+            
+            @media (max-width: 768px) {
+                padding: 12px;
+                font-size: 1.5em;
+                min-height: 44px;
+            }
         }
     }
 
