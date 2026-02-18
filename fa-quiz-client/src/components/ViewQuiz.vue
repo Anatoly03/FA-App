@@ -4,20 +4,24 @@
         <div class="options">
             <a
                 v-for="question in quiz.options"
-                :key="question.q"
+                :key="question.q + question.content"
                 @click="proofAnswer(question.q)"
                 :class="{
                     correct: showQuizAnswer && question.q === quiz.answer,
                     incorrect: showQuizAnswer && question.q !== quiz.answer && selectedAnswer === question.q,
                 }"
             >
-                <span class="option-correction-marker">
-                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="showQuizAnswer && question.q === quiz.answer" />
-                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-else-if="showQuizAnswer && question.q !== quiz.answer" />
+                <span class="option-selection-marker">
+                    <font-awesome-icon icon="fa-regular fa-circle-dot" v-if="showQuizAnswer && question.q == selectedAnswer" />
+                    <font-awesome-icon icon="fa-regular fa-circle" v-if="!showQuizAnswer || question.q != selectedAnswer" />
                 </span>
                 <span class="option-item">
                     {{ question.content }}
                 </span>
+                <span class="option-correction-marker">
+                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="showQuizAnswer && question.q === quiz.answer" />
+                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-else-if="showQuizAnswer && question.q !== quiz.answer" />
+                </span> 
             </a>
         </div>
         <div class="pagination">
@@ -66,10 +70,14 @@ function showQuiz() {
     const randomIndex = Math.floor(Math.random() * allQuizzes.value.length);
     const randomQuiz: any = allQuizzes.value[randomIndex];
 
+    // deep clone of other answers so splice() does not mutate database
+    const otherAnswers = [...randomQuiz.otherAnswers]
+        .sort(() => Math.random() - 0.5);
     const correctAnswer = randomQuiz.correctAnswer;
-    const otherAnswers = randomQuiz.otherAnswers.sort(() => Math.random() - 0.5);
-    const randomInsert = Math.floor(Math.random() * (otherAnswers.length + 1));
 
+    // add correct answer to random position in other answers
+    // and track position
+    const randomInsert = Math.floor(Math.random() * (otherAnswers.length + 1));
     otherAnswers.splice(randomInsert, 0, correctAnswer);
 
     quiz.value.question = randomQuiz.question;
@@ -93,7 +101,7 @@ onBeforeMount(async () => await fetchQuiz());
 .view-quiz {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 600px;
     margin: auto;
     gap: 16px;
 
@@ -104,7 +112,7 @@ onBeforeMount(async () => await fetchQuiz());
     .options {
         display: flex;
         flex-direction: column;
-        width: 500px;
+        width: 100%;
         margin: auto;
         gap: 4px;
 
@@ -115,7 +123,7 @@ onBeforeMount(async () => await fetchQuiz());
             border-radius: 4px;
         }
 
-        .option-correction-marker {
+        .option-correction-marker, .option-selection-marker {
             display: flex;
             width: 24px;
             justify-content: center;
