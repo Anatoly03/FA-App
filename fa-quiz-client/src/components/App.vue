@@ -1,15 +1,15 @@
 <template>
     <div class='app-body'>
-        View Home
-        <!-- <router-view></router-view> -->
+        <router-view></router-view>
     </div>
 </template>
 
 <script setup lang="ts">
 import NotFound from "./NotFound.vue";
+import ViewQuiz from "./ViewQuiz.vue";
 defineOptions({
     routes: [
-        // { name: "Home", path: "/", component: ViewHome },
+        { name: "Home", path: "/", component: ViewQuiz },
         { name: "NotFound", path: "/:pathMatch(.*)*", component: NotFound },
     ]
 });
