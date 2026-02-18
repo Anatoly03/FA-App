@@ -1,0 +1,9 @@
+{
+    "workspaces": [
+        "fa-quiz-client"
+    ],
+    "scripts": {
+        "serve": "npm run dev --workspace fa-quiz-client",
+        "build": "npm run build --workspace fa-quiz-client"
+    }
+}

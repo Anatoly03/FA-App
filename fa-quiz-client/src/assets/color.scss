@@ -1,0 +1,87 @@
+// define all variables here which can be used in themes and components
+
+:root {
+    --theme-bg: #f0f0f0;
+    --theme-bg-1: #e0e0e0;
+    --theme-bg-2: #d0d0d0;
+    --theme-bg-3: #c0c0c0;
+    --theme-bg-4: #b0b0b0;
+    --theme-bg-5: #a0a0a0;
+    --theme-bg-6: #909090;
+
+    --theme-text: #000;
+
+    --primary: #000;
+    --primary-1: #000;
+    --primary-2: #000;
+    --primary-3: #000;
+    --primary-4: #000;
+    --primary-5: #000;
+    --primary-6: #000;
+}
+
+// Blank Theme, used for testing and as a fallback. This theme is
+// intentionally very basic and not visually appealing. It's used to
+// debug positional styling and prototyping new components.
+[data-theme="blank"] {
+    --theme-bg: #fff;
+    --theme-bg-1: #e0e0e0;
+    --theme-bg-2: #d0d0d0;
+    --theme-bg-3: #c0c0c0;
+    --theme-bg-4: #b0b0b0;
+    --theme-bg-5: #a0a0a0;
+    --theme-bg-6: #909090;
+
+    --theme-text: #000;
+
+    --primary: #000;
+    --primary-1: #000;
+    --primary-2: #000;
+    --primary-3: #000;
+    --primary-4: #000;
+    --primary-5: #000;
+    --primary-6: #000;
+}
+
+// European Blue Theme, inspired by the color palette of flag of the European
+// union.
+[data-theme="european"] {
+    --theme-bg: #003399;
+    --theme-bg-1: #002a7f;
+    --theme-bg-2: #002166;
+    --theme-bg-3: #00184d;
+    --theme-bg-4: #001238;
+    --theme-bg-5: #000c24;
+    --theme-bg-6: #000612;
+
+    --theme-text: white;
+
+    --primary: #f8f9fa;
+    --primary-1: #e9ecef;
+    --primary-2: #dee2e6;
+    --primary-3: #ced4da;
+    --primary-4: #adb5bd;
+    --primary-5: #6c757d;
+    --primary-6: #495057;
+}
+
+// Dark Mode Theme
+[data-theme="dark"] {
+    --theme-bg: #354656;
+    --theme-bg-1: #2c3a4a;
+    --theme-bg-2: #232f3e;
+    --theme-bg-3: #1a2430;
+    --theme-bg-4: #121a24;
+    --theme-bg-5: #0c1218;
+    --theme-bg-6: #080c10;
+
+    --theme-text: #e6edf5;
+
+    --primary: #a7d1ff;
+    --primary-1: #8db8e0;
+    --primary-2: #729fcf;
+    --primary-3: #5a8bcf;
+    --primary-4: #4275b0;
+    --primary-5: #2a5c90;
+    --primary-6: #1a4066;
+}

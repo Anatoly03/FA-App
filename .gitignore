@@ -1,0 +1,13 @@
+# Environment files
+.env
+
+# PocketBase data
+pb_data
+
+# Node modules, Client
+dist
+node_modules
+package-lock.json
+
+# Local
+local
