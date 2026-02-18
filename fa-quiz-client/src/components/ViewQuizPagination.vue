@@ -1,11 +1,20 @@
 <template>
     <div class="view-quiz-pagination-container">
-        <div class="view-quiz-pagination">
+        <div class="view-quiz-pagination" ref="containerRef">
             <span class="width-filler"></span>
-            <span class="question" v-for="question in props.modelValue" :key="question.id">
-                <font-awesome-icon v-if="!question.showQuizAnswer" icon="fa-regular fa-circle" class="selected-question" />
-                <font-awesome-icon v-else-if="question.selectedAnswer === question.answer" icon="fa-solid fa-circle-check" />
-                <font-awesome-icon v-else icon="fa-solid fa-circle-xmark" />
+            <span
+                class="quiz-paginationentry"
+                v-for="question in props.loadedQuestions"
+                :key="question.id"
+                :data-question-id="question.id"
+                @click="() => props.selectActiveQuestion(question.id)"
+            >
+                <div class="question" v-if="question.item=='question'">
+                    <font-awesome-icon v-if="!question.showQuizAnswer" icon="fa-regular fa-circle" class="selected-question" />
+                    <font-awesome-icon v-else-if="question.selectedAnswer === question.correctAnswer" icon="fa-solid fa-circle-check" />
+                    <font-awesome-icon v-else icon="fa-solid fa-circle-xmark" />
+                </div>
+                <!-- if definition/ explanation slide -->
             </span>
             <font-awesome-icon v-for="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]" :key="i" icon="fa-regular fa-circle" />
             <span class="width-filler-sm"></span>
@@ -14,36 +23,50 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from "vue";
+import { nextTick, ref, watch } from "vue";
+import { QuizEntry } from "../quiz";
 
 const props = defineProps<{
-    modelValue: any[];
+    loadedQuestions: QuizEntry[];
+    activeQuestion: string | null;
+    selectActiveQuestion: (questionId: string) => void;
 }>();
 
+const containerRef = ref<HTMLElement | null>(null);
+
 function scrollToActive() {
-    // scroll to center the last (active) question
-    const container = document.querySelector(".view-quiz-pagination") as HTMLElement;
-    if (container && props.modelValue.length > 0) {
-        setTimeout(() => {
-            const questions = container.querySelectorAll(".question");
-            const lastQuestion = questions[questions.length - 1] as HTMLElement;
-            
-            if (lastQuestion) {
-                const questionLeft = lastQuestion.offsetLeft;
-                const questionWidth = lastQuestion.offsetWidth;
-                const containerWidth = container.offsetWidth;
-                const padding = 16; // Match the padding from CSS
-                
-                // Calculate position to center the question, accounting for padding
-                const scrollPosition = questionLeft - (containerWidth / 2) + (questionWidth / 2) - padding;
-                
-                container.scrollLeft = scrollPosition;
-            }
-        }, 0);
-    }
+    const container = containerRef.value;
+    if (!container || props.loadedQuestions.length === 0) return;
+
+    nextTick(() => {
+        let target: HTMLElement | null = null;
+
+        if (props.activeQuestion) {
+            target = container.querySelector(
+                `[data-question-id="${props.activeQuestion}"]`,
+            ) as HTMLElement | null;
+        }
+
+        if (!target) {
+            const entries = container.querySelectorAll(".quiz-paginationentry");
+            target = entries[entries.length - 1] as HTMLElement | null;
+        }
+
+        if (!target) return;
+
+        const targetLeft = target.offsetLeft;
+        const targetWidth = target.offsetWidth;
+        const containerWidth = container.clientWidth;
+        const scrollPosition = targetLeft - (containerWidth / 2) + (targetWidth / 2);
+
+        container.scrollTo({ left: scrollPosition, behavior: "smooth" });
+    });
 }
 
-watch(() => props.modelValue, scrollToActive, { deep: true });
+defineExpose({ scrollToActive });
+
+watch(() => props.loadedQuestions, scrollToActive, { deep: true });
+watch(() => props.activeQuestion, scrollToActive);
 </script>
 
 <style lang="scss" scoped>
