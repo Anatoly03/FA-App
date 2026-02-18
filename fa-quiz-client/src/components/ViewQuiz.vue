@@ -1,7 +1,10 @@
 <template>
     <div class="view-quiz">
         <ViewQuizPagination v-model="previousQuestions" />
-        <ViewQuizBody @quiz-fetched="previousQuestions.push($event)" />
+        <ViewQuizBody 
+            @quiz-fetched="previousQuestions[previousQuestions.length - 1] = $event"
+            @quiz-next="previousQuestions.push($event)" 
+        />
     </div>
 </template>
 

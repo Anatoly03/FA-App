@@ -3,9 +3,9 @@
         <div class="view-quiz-pagination">
             <span class="width-filler"></span>
             <span class="question" v-for="question in props.modelValue" :key="question.id">
-                <font-awesome-icon v-if="question.selectedAnswer === question.answer" icon="fa-solid fa-circle-check" />
+                <font-awesome-icon v-if="!question.showQuizAnswer" icon="fa-regular fa-circle" class="selected-question" />
+                <font-awesome-icon v-else-if="question.selectedAnswer === question.answer" icon="fa-solid fa-circle-check" />
                 <font-awesome-icon v-else icon="fa-solid fa-circle-xmark" />
-                <!-- <font-awesome-icon icon="fa-regular fa-circle" /> -->
             </span>
             <font-awesome-icon v-for="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]" :key="i" icon="fa-regular fa-circle" />
             <span class="width-filler-sm"></span>
@@ -20,32 +20,30 @@ const props = defineProps<{
     modelValue: any[];
 }>();
 
-watch(
-    () => props.modelValue,
-    (newVal) => {
-        // scroll to center the last (active) question
-        const container = document.querySelector(".view-quiz-pagination") as HTMLElement;
-        if (container && newVal.length > 0) {
-            setTimeout(() => {
-                const questions = container.querySelectorAll(".question");
-                const lastQuestion = questions[questions.length - 1] as HTMLElement;
+function scrollToActive() {
+    // scroll to center the last (active) question
+    const container = document.querySelector(".view-quiz-pagination") as HTMLElement;
+    if (container && props.modelValue.length > 0) {
+        setTimeout(() => {
+            const questions = container.querySelectorAll(".question");
+            const lastQuestion = questions[questions.length - 1] as HTMLElement;
+            
+            if (lastQuestion) {
+                const questionLeft = lastQuestion.offsetLeft;
+                const questionWidth = lastQuestion.offsetWidth;
+                const containerWidth = container.offsetWidth;
+                const padding = 16; // Match the padding from CSS
                 
-                if (lastQuestion) {
-                    const questionLeft = lastQuestion.offsetLeft;
-                    const questionWidth = lastQuestion.offsetWidth;
-                    const containerWidth = container.offsetWidth;
-                    const padding = 16; // Match the padding from CSS
-                    
-                    // Calculate position to center the question, accounting for padding
-                    const scrollPosition = questionLeft - (containerWidth / 2) + (questionWidth / 2) - padding;
-                    
-                    container.scrollLeft = scrollPosition;
-                }
-            }, 0);
-        }
-    },
-    { deep: true },
-);
+                // Calculate position to center the question, accounting for padding
+                const scrollPosition = questionLeft - (containerWidth / 2) + (questionWidth / 2) - padding;
+                
+                container.scrollLeft = scrollPosition;
+            }
+        }, 0);
+    }
+}
+
+watch(() => props.modelValue, scrollToActive, { deep: true });
 </script>
 
 <style lang="scss" scoped>
@@ -101,6 +99,10 @@ watch(
         height: 24px;
         display: inline-block;
         color: #ccc;
+
+        &.selected-question {
+            color: black;
+        }
     }
 
     .fa-circle-check {

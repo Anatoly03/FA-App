@@ -3,34 +3,35 @@
         <span class="triangle-pointer"></span>
         <span v-html="quiz.question"></span>
         <div class="options">
-            <a
+            <button
                 v-for="question in quiz.options"
                 :key="question.q + question.content"
                 @click="proofAnswer(question.q)"
                 :class="{
-                    correct: showQuizAnswer && question.q === quiz.answer,
-                    incorrect: showQuizAnswer && question.q !== quiz.answer && quiz.selectedAnswer === question.q,
+                    correct: quiz.showQuizAnswer && question.q === quiz.answer,
+                    incorrect: quiz.showQuizAnswer && question.q !== quiz.answer && quiz.selectedAnswer === question.q,
                 }"
+                :disabled="quiz.showQuizAnswer"
             >
                 <span class="option-selection-marker">
-                    <font-awesome-icon icon="fa-regular fa-circle-dot" v-if="showQuizAnswer && question.q == quiz.selectedAnswer" />
-                    <font-awesome-icon icon="fa-regular fa-circle" v-if="!showQuizAnswer || question.q != quiz.selectedAnswer" />
+                    <font-awesome-icon icon="fa-regular fa-circle-dot" v-if="quiz.showQuizAnswer && question.q == quiz.selectedAnswer" />
+                    <font-awesome-icon icon="fa-regular fa-circle" v-if="!quiz.showQuizAnswer || question.q != quiz.selectedAnswer" />
                 </span>
                 <span class="option-item">
                     {{ question.content }}
                 </span>
                 <span class="option-correction-marker">
-                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="showQuizAnswer && question.q === quiz.answer" />
-                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-else-if="showQuizAnswer && question.q !== quiz.answer" />
+                    <font-awesome-icon icon="fa-regular fa-circle-check" v-if="quiz.showQuizAnswer && question.q === quiz.answer" />
+                    <font-awesome-icon icon="fa-regular fa-circle-xmark" v-else-if="quiz.showQuizAnswer && question.q !== quiz.answer" />
                 </span> 
-            </a>
+            </button>
         </div>
         <span class="footer" v-if="quiz.footer">{{ quiz.footer }}</span>
         <div class="pagination">
             <button @click="showQuiz()" disabled>
                 <font-awesome-icon icon="fa-regular fa-circle-left" />
             </button>
-            <button @click="showQuiz()" :disabled="!showQuizAnswer">
+            <button @click="showQuiz()" :disabled="!quiz.showQuizAnswer">
                 <font-awesome-icon icon="fa-regular fa-circle-right" />
             </button>
         </div>
@@ -41,11 +42,10 @@
 import pb from "../service/pocketbase";
 import { onBeforeMount, onMounted, ref } from "vue";
 
-const showQuizAnswer = ref(false);
-
 const allQuizzes = ref<{}[]>([]);
 
 const emit = defineEmits<{
+    (e: "quiz-next", quiz: any): void;
     (e: "quiz-fetched", quiz: any): void;
 }>();
 
@@ -79,7 +79,7 @@ async function fetchQuiz() {
  * Show random quiz from the list of quizzes fetched from the API.
  */
 function showQuiz() {
-    showQuizAnswer.value = false;
+    quiz.value.showQuizAnswer = false;
 
     const randomIndex = Math.floor(Math.random() * allQuizzes.value.length);
     const randomQuiz: any = allQuizzes.value[randomIndex];
@@ -96,6 +96,13 @@ function showQuiz() {
 
     quiz.value.id = randomQuiz.id;
     quiz.value.question = formatQuestion(randomQuiz.question);
+    quiz.value.options = otherAnswers.map((content: string, q: number) => ({ q, content }));
+    quiz.value.answer = randomInsert;
+    quiz.value.footer = randomQuiz.footer;
+    
+    // Emit quiz-next event when moving to next question
+    emit("quiz-next", JSON.parse(JSON.stringify(quiz.value)));
+// }
     quiz.value.options = otherAnswers.map((content: string, q: number) => ({ q, content }));
     quiz.value.answer = randomInsert;
     quiz.value.footer = randomQuiz.footer;
@@ -118,7 +125,7 @@ function formatQuestion(question: string) {
  * Proof answer
  */
 function proofAnswer(selected: number) {
-    showQuizAnswer.value = true;
+    quiz.value.showQuizAnswer = true;
     quiz.value.selectedAnswer = selected;
 
     // emit quiz for pagination

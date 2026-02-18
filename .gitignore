@@ -2,7 +2,8 @@
 .env
 
 # PocketBase data
-pb_data
+# we do not gitignore database so production server can pull
+# pb_data
 
 # Node modules, Client
 dist
