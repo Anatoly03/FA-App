@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { QuizEntry } from "../quiz";
 
 const props = defineProps<{
@@ -45,6 +45,42 @@ const props = defineProps<{
 }>();
 
 const containerRef = ref<HTMLElement | null>(null);
+
+function getMaxScrollLeft(container: HTMLElement): number {
+    const entries = container.querySelectorAll(".quiz-pagination-entry");
+    const lastEntry = entries[entries.length - 1] as HTMLElement | undefined;
+
+    if (!lastEntry) return 0;
+
+    const centeredLastEntry =
+        lastEntry.offsetLeft - (container.clientWidth / 2) + (lastEntry.offsetWidth / 2);
+
+    return Math.max(0, centeredLastEntry);
+}
+
+function clampScrollToLastEntry() {
+    const container = containerRef.value;
+    if (!container) return;
+
+    const maxScrollLeft = getMaxScrollLeft(container);
+    if (container.scrollLeft > maxScrollLeft) {
+        container.scrollTo({ left: maxScrollLeft, behavior: "auto" });
+    }
+}
+
+function stopMomentumAtBounds(event: WheelEvent) {
+    const container = containerRef.value;
+    if (!container) return;
+
+    const maxScrollLeft = getMaxScrollLeft(container);
+    const atMin = container.scrollLeft <= 0;
+    const atMax = container.scrollLeft >= maxScrollLeft - 1;
+
+    if ((atMax && event.deltaX > 0) || (atMin && event.deltaX < 0)) {
+        event.preventDefault();
+        container.scrollTo({ left: atMax ? maxScrollLeft : 0, behavior: "auto" });
+    }
+}
 
 function scrollToActive() {
     const container = containerRef.value;
@@ -60,7 +96,7 @@ function scrollToActive() {
         }
 
         if (!target) {
-            const entries = container.querySelectorAll(".quiz-paginationentry");
+            const entries = container.querySelectorAll(".quiz-pagination-entry");
             target = entries[entries.length - 1] as HTMLElement | null;
         }
 
@@ -70,15 +106,36 @@ function scrollToActive() {
         const targetWidth = target.offsetWidth;
         const containerWidth = container.clientWidth;
         const scrollPosition = targetLeft - (containerWidth / 2) + (targetWidth / 2);
+        const clampedScrollPosition = Math.min(
+            Math.max(scrollPosition, 0),
+            getMaxScrollLeft(container),
+        );
 
-        container.scrollTo({ left: scrollPosition, behavior: "smooth" });
+        container.scrollTo({ left: clampedScrollPosition, behavior: "smooth" });
     });
 }
 
 defineExpose({ scrollToActive });
 
+onMounted(() => {
+    const container = containerRef.value;
+    if (!container) return;
+
+    container.addEventListener("scroll", clampScrollToLastEntry, { passive: true });
+    container.addEventListener("wheel", stopMomentumAtBounds, { passive: false });
+});
+
+onBeforeUnmount(() => {
+    const container = containerRef.value;
+    if (!container) return;
+
+    container.removeEventListener("scroll", clampScrollToLastEntry);
+    container.removeEventListener("wheel", stopMomentumAtBounds);
+});
+
 watch(() => props.loadedQuestions, scrollToActive, { deep: true });
 watch(() => props.activeQuestion, scrollToActive);
+watch(() => props.loadedQuestions.length, () => nextTick(clampScrollToLastEntry));
 </script>
 
 <style lang="scss" scoped>
