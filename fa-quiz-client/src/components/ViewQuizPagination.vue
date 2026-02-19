@@ -189,11 +189,7 @@ watch(() => props.activeQuestion, scrollToActive);
         pointer-events: none;
     }
 
-    .fa-compass {
-        font-size: 1.5em;
-        pointer-events: none;
-    }
-
+    .fa-compass,
     .fa-face-laugh-beam,
     .fa-face-meh,
     .fa-face-frown,
@@ -201,14 +197,13 @@ watch(() => props.activeQuestion, scrollToActive);
         font-size: 1.5em;
     }
 
-    .quiz-paginationentry {
+    .quiz-pagination-entry {
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         flex-shrink: 0;
-        padding: 4px;
-        pointer-events: auto;
+        pointer-events: fill;
         user-select: none;
         transition: transform 150ms ease, opacity 150ms ease;
         
