@@ -28,8 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
-import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
+import { computed } from "vue";
+import { Chart as ChartJS, ArcElement, Tooltip, type ActiveElement, type ChartEvent } from "chart.js";
 import { Pie } from "vue-chartjs";
 import { QuizEntry } from "../quiz";
 
@@ -39,10 +39,6 @@ const props = defineProps<{
     fullData: QuizEntry[];
     chapter: string;
     chapterIndex: number;
-    content: string;
-    proofAnswer: (selected: number) => void;
-    onNext: () => void;
-    onBack: () => void;
     scrollBackTo: (lambda: (entry: QuizEntry) => boolean) => void;
 }>();
 
@@ -88,17 +84,19 @@ const data = computed(() => {
     };
 });
 
-function onClick(event: MouseEvent, elements: any[]) {
+function onClick(_event: ChartEvent, elements: ActiveElement[]) {
     if (elements.length === 0) return;
 
     const _type = elements[0].datasetIndex;
     const lambda = (entry: QuizEntry): boolean => {
+        if (entry.item !== "question") return false;
         switch (_type) {
             case 0: return entry.selectedAnswers.length == 0;
             case 1: return entry.stats.solved && entry.stats.triesWrong === 0;
             case 2: return !entry.stats.solved && entry.stats.triesWrong === 1;
             case 3: return !entry.stats.solved && entry.stats.triesWrong > 1;
             case 4: return !entry.stats.solved && entry.stats.triesWrong === 0;
+            default: return false;
         }
     };
 

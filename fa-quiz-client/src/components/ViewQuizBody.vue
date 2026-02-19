@@ -3,10 +3,10 @@
         <span class="triangle-pointer"></span>
         <slot></slot>
         <div class="pagination">
-            <button @click="props?.onBack()" :disabled="!props.onBack">
+            <button @click="props.onBack?.()" :disabled="!props.onBack">
                 <font-awesome-icon icon="fa-regular fa-circle-left" />
             </button>
-            <button @click="props?.onNext()" :disabled="!props.onNext">
+            <button @click="props.onNext?.()" :disabled="!props.onNext">
                 <font-awesome-icon icon="fa-regular fa-circle-right" />
             </button>
         </div>
@@ -17,8 +17,8 @@
 import { onMounted, onUnmounted } from "vue";
 
 const props = defineProps<{
-    onNext?: (() => void) | boolean;
-    onBack?: (() => void) | boolean;
+    onNext?: () => void;
+    onBack?: () => void;
 }>();
 
 function handleKeyboard(event: KeyboardEvent) {
@@ -26,12 +26,12 @@ function handleKeyboard(event: KeyboardEvent) {
         case "ArrowLeft":
         case 'a':
             event.preventDefault();
-            props.onBack();
+            props.onBack?.();
             break;
         case "ArrowRight":
         case 'd':
             event.preventDefault();
-            props.onNext();
+            props.onNext?.();
             break;
     }
 }

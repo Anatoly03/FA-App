@@ -1,7 +1,7 @@
 <template>
     <div class="view-quiz">
         <ViewQuizPagination ref="paginationRef" :loadedQuestions="loadedQuestions" :activeQuestion="activeQuizEntry?.id ?? null" :selectActiveQuestion="selectActiveQuestion" />
-        <ViewQuizBody :onNext="nextQuestionExists && nextQuizPage" :onBack="activeQuizEntryIndex > 0 && previousQuizPage">
+        <ViewQuizBody :onNext="nextQuestionExists ? nextQuizPage : undefined" :onBack="activeQuizEntryIndex > 0 ? previousQuizPage : undefined">
             <ViewQuizQuestion
                 v-if="activeQuizEntry && activeQuizEntry.item === 'question'"
                 :questionModel="activeQuizEntry"
@@ -65,10 +65,9 @@ function getQuizEntryFromQuestion(questionModel: RecordModel, chapterIndex: numb
         id: questionModel.id,
         chapterIndex,
         question,
-        options: options.map((content, index) => content),
+        options,
         footer: questionModel.footer,
         correctAnswer,
-        showQuizAnswer: false,
         selectedAnswers: [],
         isActive: false,
         stats: {
@@ -125,7 +124,7 @@ function updatePagination() {
 async function nextQuizPage() {
     if (!nextQuestionExists.value) return;
 
-    const activeIndex = loadedQuestions.value.findIndex((q) => q.isActive);
+    let activeIndex = loadedQuestions.value.findIndex((q) => q.isActive);
     if (activeIndex === -1) activeIndex = loadedQuestions.value.length - 1;
 
     if (activeIndex < 0) throw new Error("unreachable");
@@ -185,7 +184,7 @@ async function scrollBackTo(lambda: (entry: QuizEntry) => boolean) {
 
     let foundIndex = -1;
     for (let i = activeIndex - 1; i >= 0; i -= 1) {
-        if (!lambda(loadedQuestions.value[i])) {
+        if (lambda(loadedQuestions.value[i])) {
             foundIndex = i;
             break;
         }
@@ -215,10 +214,9 @@ function selectActiveQuestion(id: string) {
  * quiz answer.
  */
 function proofAnswer(selected: number) {
-    if (!activeQuizEntry.value) return;
+    if (!activeQuizEntry.value || activeQuizEntry.value.item !== "question") return;
 
     activeQuizEntry.value.selectedAnswers.push(selected);
-    activeQuizEntry.value.showQuizAnswer = true;
 
     // record statistics
     activeQuizEntry.value.stats.tries += 1;
@@ -249,7 +247,8 @@ async function fetchChapter(resetActive = true) {
         });
 
         // load lectures
-        if (chapterLectures.expand.lessons && chapterLectures.expand.lessons.length > 0) loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
+        const lessons = chapterLectures.expand?.lessons;
+        if (lessons && lessons.length > 0) loadedQuestions.value.push(...lessons.map(getQuizEntryFromLecture));
 
         // load questions
         const shuffled = chapterQuestions.map((q) => getQuizEntryFromQuestion(q, chapter.value)).sort(() => Math.random() - 0.5);
