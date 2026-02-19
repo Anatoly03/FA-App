@@ -225,12 +225,12 @@ async function scrollToNextCheckpoint() {
 /**
  *
  */
-async function scrollToPreviousCheckpoint(resetLecturesOnTheWay = false) {
+async function scrollToPreviousCheckpoint(kind?: "all" | "wrong") {
     do {
         await previousQuizPage();
 
-        if (resetLecturesOnTheWay) {
-            if (activeQuizEntry.value?.item === 'question') {
+        if (kind && activeQuizEntry.value?.item === "question") {
+            if (kind === "all" || (kind === "wrong" && activeQuizEntry.value.stats.triesWrong > 0)) {
                 activeQuizEntry.value.selectedAnswers = [];
                 activeQuizEntry.value.stats.solved = false;
                 activeQuizEntry.value.stats.tries = 0;

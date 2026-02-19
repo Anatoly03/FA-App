@@ -2,7 +2,7 @@
     <div class="view-quiz-checkpoint">
         <span class="subtitle"> Checkpoint </span>
         <div class="content">
-            <div class="badge">
+            <div class="badge badge-left">
                 <div class="badge-stats">
                     <span class="data-entry">
                         <span
@@ -20,7 +20,10 @@
                         <span class="small">Questions</span>
                     </span>
                 </div>
-                <a class="btn" @click="resetLecture">Reset Lecture</a>
+                <div class="horizontal">
+                    <a class="btn" @click="resetLecture('all')">Reset Lecture</a>
+                    <a class="btn" @click="resetLecture('wrong')">Reset Wrong</a>
+                </div>
             </div>
             <div class="badge badge-border">
                 <div class="chart-wrap">
@@ -45,7 +48,7 @@ const props = defineProps<{
     chapter: string;
     chapterIndex: number;
     scrollBackTo: (lambda: (entry: QuizEntry) => boolean) => void;
-    scrollToPreviousCheckpoint: (reset: boolean) => void;
+    scrollToPreviousCheckpoint: (kind?: "all" | "wrong") => void;
 }>();
 
 // placeholder data
@@ -90,8 +93,8 @@ const data = computed(() => {
     };
 });
 
-function resetLecture() {
-    props.scrollToPreviousCheckpoint(true);
+function resetLecture(kind: "all" | "wrong") {
+    props.scrollToPreviousCheckpoint(kind);
 }
 
 function onClick(_event: ChartEvent, elements: ActiveElement[]) {
@@ -152,8 +155,8 @@ p:has(.gitub-link) {
     width: 100%;
     gap: 16px;
     padding: 8px 8px 0;
-    margin-bottom: -8px;
     box-sizing: border-box;
+    margin-bottom: -8px;
 
     .subtitle {
         margin-top: -25px;
@@ -163,14 +166,14 @@ p:has(.gitub-link) {
     }
 
     .content {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         align-items: stretch;
-        gap: 16px;
-        margin: 0 8px 0 16px;
+        gap: 8px;
+        margin: 0 8px;
 
         @media (max-width: 768px) {
-            flex-direction: column;
+            grid-template-columns: 1fr;
             margin: 0;
         }
     }
@@ -182,7 +185,7 @@ p:has(.gitub-link) {
 }
 
 .badge {
-    flex: 1 1 0;
+    flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
@@ -208,14 +211,37 @@ p:has(.gitub-link) {
         justify-content: space-around;
     }
 
+    .horizontal {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 4px;
+
+        .btn {
+            align-items: center;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 1.1;
+            font-size: 1.05em;
+
+            @media (max-width: 768px) {
+                font-size: 1.1em;
+            }
+        }
+    }
+
+    .badge-left {
+        flex: 1;
+    }
+
     .btn {
         display: flex;
+        flex: 1;
         border: 1px solid #ccc;
         border-radius: 4px;
         padding: 4px;
         background-color: #eee;
-        width: 100%;
-        justify-content: center;
 
         @media (max-width: 768px) {
             padding: 8px;
@@ -262,7 +288,7 @@ p:has(.gitub-link) {
     }
 
     &.badge-border {
-        flex: 0.95 1 0;
+        flex: 1 1 0;
         padding: 16px;
         border: 1px solid #ccc;
         border-radius: 8px;
