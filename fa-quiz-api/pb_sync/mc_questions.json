@@ -372,7 +372,7 @@
     "collectionName": "mc_questions",
     "correctAnswer": "... other comprehensive income and profit or loss.",
     "created": "2026-02-18 23:38:51.348Z",
-    "footer": "",
+    "footer": "This is from FA past exam + This is from quiz page",
     "id": "x61u827mhxqmvc9",
     "otherAnswers": [
       "... changes in equity from transaction with shareholders and profit or loss.",
@@ -380,7 +380,7 @@
       "... profit or loss and other changes in equity."
     ],
     "question": "Total Comprehensive Income consists of ...",
-    "updated": "2026-02-18 23:38:51.348Z"
+    "updated": "2026-02-19 21:53:27.963Z"
   },
   {
     "chapter": "gftsg6bdm8im7eq",
@@ -1564,5 +1564,1057 @@
     ],
     "question": "The Equity-to-Fixed Assets Ratio can be used to examine the firm’s ...",
     "updated": "2026-02-19 15:07:21.931Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Granting a bank loan amounting to 1.111€ in cash",
+    "created": "2026-02-19 19:31:57.328Z",
+    "footer": "Quiz from Mentimeter",
+    "id": "q70mgcecb7vd9ts",
+    "otherAnswers": [
+      "Cash sale of goods for 300€",
+      "Cash purchase of raw materials",
+      "Sales of goods for 600€ on credit",
+      "Purchase of goods for 600€ on credit",
+      "Taking a cash loan amounting to 95.000€"
+    ],
+    "question": "What business transaction represents only a Cash Outflow?",
+    "updated": "2026-02-19 19:31:57.328Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Cash sale of goods for 300€",
+    "created": "2026-02-19 19:33:25.081Z",
+    "footer": "Quiz from Mentimeter",
+    "id": "p1y2ayy56nwjxnx",
+    "otherAnswers": [
+      "Granting a bank loan amounting to 1.111€ in cash",
+      "Cash purchase of raw materials",
+      "Sales of goods for 600€ on credit",
+      "Purchase of goods for 600€ on credit",
+      "Taking a cash loan amounting to 95.000€"
+    ],
+    "question": "What business transaction represents Receipts and Cash Inflow?",
+    "updated": "2026-02-19 19:34:36.458Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Purchase of a production machine for 100.000€",
+    "created": "2026-02-19 19:37:25.929Z",
+    "footer": "Quiz from Mentimeter",
+    "id": "wov0k2bgheeyg1d",
+    "otherAnswers": [
+      "Sale of tangible assets at bbook value which amounts to 5.000€",
+      "Impairment of a company vehicle",
+      "A customer pays for a service 6.000€ in cash",
+      "Rental payment of a business office",
+      "Increase in value for a company's own tangible asset by 100€"
+    ],
+    "question": "What business transaction represents only an Expenditure?",
+    "updated": "2026-02-19 19:37:25.929Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "A customer pays for a service 6.000€ in cash",
+    "created": "2026-02-19 19:38:41.808Z",
+    "footer": "Quiz from Mentimeter",
+    "id": "1afsm5b61m183bk",
+    "otherAnswers": [
+      "Sale of tangible assets at bbook value which amounts to 5.000€",
+      "Impairment of a company vehicle",
+      "Rental payment of a business office",
+      "Increase in value for a company's own tangible asset by 100€",
+      "Purchase of a production machine for 100.000€"
+    ],
+    "question": "What business transaction represents Receipts and Income?",
+    "updated": "2026-02-19 19:38:41.808Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Rental payment of a business office",
+    "created": "2026-02-19 19:40:07.928Z",
+    "footer": "Quiz from Mentimeter",
+    "id": "wl8lmnspalc5wc3",
+    "otherAnswers": [
+      "A customer pays for a service 6.000€ in cash",
+      "Sale of tangible assets at bbook value which amounts to 5.000€",
+      "Impairment of a company vehicle",
+      "Increase in value for a company's own tangible asset by 100€",
+      "Purchase of a production machine for 100.000€"
+    ],
+    "question": "What business transaction represents an Expenditure and an Expense?",
+    "updated": "2026-02-19 19:40:07.928Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Impairment of a company vehicle",
+    "created": "2026-02-19 19:41:01.077Z",
+    "footer": "Quiz from Mentimeter",
+    "id": "364qjy9dgnyzp5h",
+    "otherAnswers": [
+      "A customer pays for a service 6.000€ in cash",
+      "Sale of tangible assets at bbook value which amounts to 5.000€",
+      "Increase in value for a company's own tangible asset by 100€",
+      "Purchase of a production machine for 100.000€",
+      "Rental payment of a business office"
+    ],
+    "question": "What business transaction represents only an Expense?",
+    "updated": "2026-02-19 19:41:01.077Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Receipt",
+    "created": "2026-02-19 21:01:11.031Z",
+    "footer": "From Moodle Quiz",
+    "id": "e12x38na9otvu2t",
+    "otherAnswers": [
+      "Expense",
+      "Income",
+      "Expenditure"
+    ],
+    "question": "The transaction “Sale of tangible assets for its book value of 5,000 EUR.” is a / an ...",
+    "updated": "2026-02-19 21:02:57.731Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Cash-inflow, receipt and income",
+    "created": "2026-02-19 21:02:08.993Z",
+    "footer": "From Moodle Quiz",
+    "id": "y71alzy0vy9hcon",
+    "otherAnswers": [
+      "Receipt and income",
+      "Income",
+      "Receipt"
+    ],
+    "question": "The transaction “A customer’s cash payment for services in the amount of 6,000 EUR.” is a / an ..",
+    "updated": "2026-02-19 21:03:01.110Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "D: Write-down of tangible assets; C: Vehicle Fleet 1,000",
+    "created": "2026-02-19 21:07:56.537Z",
+    "footer": "This is from FA past exam",
+    "id": "eyrwza7i7exf4ye",
+    "otherAnswers": [
+      "D: D\u0026A; C: Vehicle Fleet 1,000",
+      "D: Other operating expenses; C: Vehicle Fleet 1,000",
+      "D: Vehicle Fleet; C: Write-down of tangible assets 1,000"
+    ],
+    "question": "Because of hail damage, a company car suffered a loss of 1,000 EUR that won’t be repaired. Which of the following postings represents the the value decrease correctly?",
+    "updated": "2026-02-19 21:07:56.537Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... is subject to legal rules.",
+    "created": "2026-02-19 21:09:14.153Z",
+    "footer": "This is from FA past exam",
+    "id": "dx0aznhf9kbk5sm",
+    "otherAnswers": [
+      "... is customizable for each company.",
+      "... is determined by chartered accountants.",
+      "... is designed by works council."
+    ],
+    "question": "External accounting ...",
+    "updated": "2026-02-19 21:09:14.153Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... a cash-outflow and an expenditure.",
+    "created": "2026-02-19 21:10:33.222Z",
+    "footer": "This is from FA past exam",
+    "id": "fmhzukxwjgff9aa",
+    "otherAnswers": [
+      "... only a cash-outflow",
+      "... only a receipt",
+      "... a cash-outflow and a receipt"
+    ],
+    "question": "The transaction \"Purchase of raw materials via cash payment\" is ...",
+    "updated": "2026-02-19 21:10:33.222Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Process Mining software requires event logs, i.e., the user must have access to relevant IT systems.",
+    "created": "2026-02-19 21:11:45.092Z",
+    "footer": "This is from FA past exam",
+    "id": "yl5tdleigos60q3",
+    "otherAnswers": [
+      "Process Mining is a one-time approach and requires no further attention once the inefficient processes are identified.",
+      "Process Mining captures both digital and manual activities in a process.",
+      "Process Mining proposes the optimal process for a specific problem."
+    ],
+    "question": "Which of the following statements on Process Mining is correct?",
+    "updated": "2026-02-19 21:11:45.092Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "The EU endorsement process is necessary because the IASB has no legislative power.",
+    "created": "2026-02-19 21:12:39.761Z",
+    "footer": "This is from FA past exam",
+    "id": "ogyl1bmpokep55q",
+    "otherAnswers": [
+      "Both German GAAP and IFRS apply the concept of Other Comprehensive Income.",
+      "German GAAP is way more fair value oriented than IFRS.",
+      "The IASB develops standards for enforcing accounting standards and is responsible for global enforcement coordination."
+    ],
+    "question": "Which of the following statements is correct?",
+    "updated": "2026-02-19 21:12:39.761Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Cash flow from business activities.",
+    "created": "2026-02-19 21:13:58.356Z",
+    "footer": "This is from FA past exam",
+    "id": "2hk1xy5btg3n8zn",
+    "otherAnswers": [
+      "Cash flow from operating activities.",
+      "Cash flow from investing activities.",
+      "Cash flow from financing activities."
+    ],
+    "question": "Which of the following sub-cash flows is not part of the sub-cash flows in a statement of cash flows under IFRS?",
+    "updated": "2026-02-19 21:13:58.356Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "performance and cost",
+    "created": "2026-02-19 21:14:43.188Z",
+    "footer": "This is from FA past exam",
+    "id": "j5n0d1aqb8fvxrn",
+    "otherAnswers": [
+      "receipt and expenditure",
+      "income and expense",
+      "cash-inflow and cash-outflow"
+    ],
+    "question": "The operating result is formed by balancing ...",
+    "updated": "2026-02-19 21:14:43.188Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Receiving a pre-payment on a sale of goods in the subsequent period is a cash-inflow.",
+    "created": "2026-02-19 21:15:31.418Z",
+    "footer": "This is from FA past exam",
+    "id": "czhvdgba5osduup",
+    "otherAnswers": [
+      "Cash sale of goods is a receipt but not an income.",
+      "Cash sale of goods is a expense.",
+      "Sale of goods on credit is a cash-inflow."
+    ],
+    "question": "Which of the following statements is correct?",
+    "updated": "2026-02-19 21:15:31.418Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "only a cash-outflow",
+    "created": "2026-02-19 21:16:35.089Z",
+    "footer": "This is from FA past exam",
+    "id": "h0yk28gmwbs7t0n",
+    "otherAnswers": [
+      "only an expenditure",
+      "only a receipt",
+      "a cash-outflow and an expenditure"
+    ],
+    "question": "The transaction \"Payment of machinery, that is going to be delivered in the subsequent period“ is ...",
+    "updated": "2026-02-19 21:16:35.089Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "D: Expenses for raw materials; C: Raw materials 250",
+    "created": "2026-02-19 21:18:15.646Z",
+    "footer": "This is from FA past exam",
+    "id": "be5ys2bqupvcr0f",
+    "otherAnswers": [
+      "D: Expenses for raw materials; C: Finished goods 250",
+      "D: Expenses for goods for resale 275 C: Raw materials 250",
+      "D: Raw materials; C: Finished goods 250"
+    ],
+    "question": "When producing a table JUPITER company is consuming wood worth 250 EUR. Which of the following postings represents the business transaction correctly.\r\nAssumption: VAT (Value Added Tax): 10%",
+    "updated": "2026-02-19 21:18:15.646Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "An integrated report is a concise communication about how an organization's strategy, governance, performance and prospects lead to the creation of value over the short, medium and long term.",
+    "created": "2026-02-19 21:38:22.538Z",
+    "footer": "This is from FA past exam",
+    "id": "pimlda23eqasitz",
+    "otherAnswers": [
+      "All of the other mentioned answers are correct.",
+      "An integrated report combines CSR and other non-financials in a non-financial report.",
+      "An integrated report presents only financial information in detail."
+    ],
+    "question": "Which statement regarding Integrated Reporting is correct?",
+    "updated": "2026-02-19 21:38:22.538Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Segment reporting",
+    "created": "2026-02-19 21:39:09.036Z",
+    "footer": "This is from FA past exam",
+    "id": "jwvz02280iv61u8",
+    "otherAnswers": [
+      "Statement of changes in equity",
+      "Statement of comprehensive income",
+      "Notes to the financial statement"
+    ],
+    "question": "Which is not a mandatory component of consolidated financial statements in accordance with IFRS?",
+    "updated": "2026-02-19 21:39:09.036Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "The net realizable value of inventories is assessed in each subsequent period.",
+    "created": "2026-02-19 21:40:11.082Z",
+    "footer": "This is from FA past exam",
+    "id": "i3oc097uawymyjg",
+    "otherAnswers": [
+      "The initial measurement of Inventories is done at the lower value of cost and net realizable value (NRV).",
+      "FIFO is not in line with the aim of IFRS to provide a market-based view.",
+      "In times of increasing costs, LIFO deflates the costs of goods sold."
+    ],
+    "question": "Which of the following statements is correct?",
+    "updated": "2026-02-19 21:40:11.082Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "only a cash-outflow",
+    "created": "2026-02-19 21:41:00.644Z",
+    "footer": "This is from FA past exam",
+    "id": "14deox4wpavxid6",
+    "otherAnswers": [
+      "only a receipt",
+      "a cash-outflow and an expenditure",
+      "only an expenditure"
+    ],
+    "question": "The transaction \"Repayment of a loan in the amount of 50,000€\" is ...",
+    "updated": "2026-02-19 21:41:00.644Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Management accounting has to follow certain legal requirements.",
+    "created": "2026-02-19 21:42:00.856Z",
+    "footer": "This is from FA past exam",
+    "id": "j1cgu6rbf3yi484",
+    "otherAnswers": [
+      "Representing a company's net asset, financial situation and result of operations belongs to financial accounting.",
+      "Financial accounting generates information for decision makers outside the company.",
+      "Management accounting generates information for decision makers inside the company."
+    ],
+    "question": "Which of the following statements is wrong?",
+    "updated": "2026-02-19 21:42:00.856Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Profit affecting balance shortening",
+    "created": "2026-02-19 21:42:55.332Z",
+    "footer": "This is from FA past exam",
+    "id": "j1ycjtjofp1llvb",
+    "otherAnswers": [
+      "Profit neutral asset swap.",
+      "Profit neutral balance shortening.",
+      "Profit affecting balance extension."
+    ],
+    "question": "The transaction \"Depreciation of property\" is a ...",
+    "updated": "2026-02-19 21:42:55.332Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "only a receipt",
+    "created": "2026-02-19 21:44:25.087Z",
+    "footer": "This is from FA past exam",
+    "id": "vkec5xoeu5pi1ah",
+    "otherAnswers": [
+      "only an expenditure",
+      "only an expense",
+      "only a profit"
+    ],
+    "question": "The transaction \"Sale of goods for 700€ on credit\" is ...",
+    "updated": "2026-02-19 21:44:25.087Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Monetary value of a company‘s delivered economic goods within a period.",
+    "created": "2026-02-19 21:45:39.378Z",
+    "footer": "This is from FA past exam",
+    "id": "cfdmnvr9kroik6m",
+    "otherAnswers": [
+      "Cash and cash equivalents that flow directly to the company within a period.",
+      "Monetarily assessed increase in value due to performance of services.",
+      "Increase in value within a period (affecting net income)"
+    ],
+    "question": "Select the correct definition for receipts.",
+    "updated": "2026-02-19 21:45:39.377Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Provision should be recognised at the amount of 5,000€ and the compensation claim of 50,000€ should be disclosed in the notes.",
+    "created": "2026-02-19 21:46:49.625Z",
+    "footer": "This is from FA past exam",
+    "id": "mx8c3h8pd7x0oep",
+    "otherAnswers": [
+      "Provision should be recognised at the amount of 50,000€ and the legal costs should be disclosed in the notes.",
+      "No provisions should be recognised but both items should be disclosed in the notes.",
+      "Provision should be recognised at the amount of 55,000€."
+    ],
+    "question": "A former employee is claiming compensation of 50,000€ from JUPITER for wrongful dismissal. The company's solicitors have stated that they believe that the claim is unlikely but not remote to succeed. The legal costs relating to the claim are likely to be in the region of 5,000€ and will be incurred regardless of whether or not the claim is successful.\r\n\r\nHow should these items be treated in the IFRS financial statements of JUPITER?",
+    "updated": "2026-02-19 21:46:49.625Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Inventory count is an area in which warehouse clerks can benefit from the use of Robotic Process Automation.",
+    "created": "2026-02-19 21:48:26.703Z",
+    "footer": "This is from FA past exam",
+    "id": "qs4rfg7grgkocll",
+    "otherAnswers": [
+      "Natural language processing is a subfield of IoT.",
+      "Cloud technology enables accounting departments to obtain required software \"as-a-service\" over the internet.",
+      "Visualization can increase data accuracy in the planning and budgeting process."
+    ],
+    "question": "Which of the following statements on the use of digital technologies in financial accounting is correct?",
+    "updated": "2026-02-19 21:48:26.703Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "D: Rental income; C: Income statement account 12,000",
+    "created": "2026-02-19 21:49:36.128Z",
+    "footer": "This is from FA past exam",
+    "id": "qa7fui3e6qcb5tn",
+    "otherAnswers": [
+      "D: Income statement account; C: Rental income 12,000",
+      "D: Closing balance sheet account; C: Rental income 12,000",
+      "D: Rental income; C: Closing balance sheet account 12,000"
+    ],
+    "question": "During the current fiscal year all income from rent is generated by a warehouse which is rented out with a monthly rental income of 1,000 EUR. How to close the account 'Rental income' at year end of fiscal year?",
+    "updated": "2026-02-19 21:49:36.128Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "The increase in value is recognized in the OCI after reversing any impairments of previous periods.",
+    "created": "2026-02-19 21:50:37.363Z",
+    "footer": "This is from FA past exam",
+    "id": "xzqa4nqdwmrxy3z",
+    "otherAnswers": [
+      "There is not need for depreciation, the Property, plant, and equipment asset is measured at historical cost.",
+      "The increase is always completely recognized in OCI.",
+      "The increase is always completely recognized in profit or loss."
+    ],
+    "question": "Under the revaluation model, the fair value of a property, plant, and equipment asset is higher than the carrying amount at the end of the fiscal year. Which of the following statements is correct (assume that the firm revalues its property, plant and equipment each year at the end of the fiscal year)?",
+    "updated": "2026-02-19 21:50:37.363Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "SAP S/4 HANA is SAP’s most recent ERP solution and relies, among others, on in-memory computing and blockchain technology.",
+    "created": "2026-02-19 21:51:53.393Z",
+    "footer": "This is from FA past exam",
+    "id": "76mnnmhagqq6qiy",
+    "otherAnswers": [
+      "The event logs of SAP’s ERP systems can be used as an input for Process Mining software.",
+      "SAP S/4 HANA consists of several modules, including, among others, Finance (FI), Materials Management (MM), and Supply Chain Management (SCM).",
+      "ERP systems support, optimizes and document the information flows within a company’s business processes."
+    ],
+    "question": "Which of the following statements on ERP processes is not correct?",
+    "updated": "2026-02-19 21:51:53.393Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Greenwashing is a form of marketing in which green values are deceptively used to persuade the public that an organization's products, aims and policies are environmentally friendly and therefore ‘better’.",
+    "created": "2026-02-19 21:52:48.101Z",
+    "footer": "This is from FA past exam",
+    "id": "3psorcl4htw9aoy",
+    "otherAnswers": [
+      "Greenwashing is good business practice.",
+      "Greenwashing protects consumers.",
+      "Greenwashing always goes beyond changing the name or label of a product."
+    ],
+    "question": "Which statement regarding greenwashing is correct?",
+    "updated": "2026-02-19 21:52:48.101Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "None of the other mentioned answers is correct.",
+    "created": "2026-02-19 21:55:02.990Z",
+    "footer": "This is from FA past exam",
+    "id": "94mc1dhw8pv3jb4",
+    "otherAnswers": [
+      "Only LIFO and Weighted Average Method.",
+      "Only FIFO and Weighted Average Method.",
+      "Only FIFO and LIFO."
+    ],
+    "question": "Which of the following cost formulars for measuring inventories are permitted by German GAAP?",
+    "updated": "2026-02-19 21:55:02.990Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "For certain self-generated intangible assets development costs can be capitalized if future economic benefits are probable.",
+    "created": "2026-02-19 21:56:03.918Z",
+    "footer": "This is from FA past exam",
+    "id": "k66q7n42mpey41y",
+    "otherAnswers": [
+      "For certain self-generated intangible assets development costs must be capitalized if future economic benefits are probable.",
+      "For certain self-generated intangible assets development costs must be capitalized if an active market exists.",
+      "For certain self-generated intangible assets development costs can be capitalized if an active market exists."
+    ],
+    "question": "Which of the following statements is correct?",
+    "updated": "2026-02-19 21:56:03.918Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... only an expenditure",
+    "created": "2026-02-19 21:57:10.376Z",
+    "footer": "This is from FA past exam",
+    "id": "ic6yoavnz2zy838",
+    "otherAnswers": [
+      "... an expenditure and an expense",
+      "... only an expense",
+      "... a cash-outflow, an expenditure and an expense"
+    ],
+    "question": "The transaction \"Purchase of wooden planks for 200€ on credit“ is ...",
+    "updated": "2026-02-19 21:57:10.376Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Managing director",
+    "created": "2026-02-19 22:05:17.189Z",
+    "footer": "",
+    "id": "6v7cl9256rgykq3",
+    "otherAnswers": [
+      "Tax advisor",
+      "Public accountant",
+      "Owner"
+    ],
+    "question": "Who needs to be appointed for a company being able to be legally represented?",
+    "updated": "2026-02-19 22:05:17.189Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Owners",
+    "created": "2026-02-19 22:05:55.793Z",
+    "footer": "",
+    "id": "429yp47qnzy6kc4",
+    "otherAnswers": [
+      "Employees",
+      "Creditors",
+      "Suppliers"
+    ],
+    "question": "Who is entitled to appoint the management?",
+    "updated": "2026-02-19 22:05:55.793Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Commercial account",
+    "created": "2026-02-19 22:07:08.192Z",
+    "footer": "",
+    "id": "0233ml3xqjsfg80",
+    "otherAnswers": [
+      "Investment account",
+      "Private account",
+      "Liability account"
+    ],
+    "question": "What do you call the account of a company used to process its monetary transactions?",
+    "updated": "2026-02-19 22:07:08.192Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Liabilities",
+    "created": "2026-02-19 22:07:48.130Z",
+    "footer": "",
+    "id": "x97pqqgmww6pqib",
+    "otherAnswers": [
+      "Assets",
+      "Provisions",
+      "Credits"
+    ],
+    "question": "What‘s the technical term for all the debts of a company?",
+    "updated": "2026-02-19 22:07:48.130Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Liabilities side",
+    "created": "2026-02-19 22:08:33.287Z",
+    "footer": "",
+    "id": "cqoi6d6uxkhjnj2",
+    "otherAnswers": [
+      "Asset side",
+      "Capital side",
+      "Debt side"
+    ],
+    "question": "The side of the balance sheet, which includes equity and debt is called ...",
+    "updated": "2026-02-19 22:08:33.287Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Asset side",
+    "created": "2026-02-19 22:09:28.704Z",
+    "footer": "",
+    "id": "pfss23x79k08uim",
+    "otherAnswers": [
+      "Capital side",
+      "Liabilities side",
+      "Debt side"
+    ],
+    "question": "The side of the balance sheet, which includes the company's assets is called ...",
+    "updated": "2026-02-19 22:09:28.704Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "A customer whom the company has sold goods on credit.",
+    "created": "2026-02-19 22:10:09.645Z",
+    "footer": "",
+    "id": "dtngghk39hlmqht",
+    "otherAnswers": [
+      "A supplier from whom the company has bought goods on credit.",
+      "A Bank which has granted the company a bank loan.",
+      "An owner who has granted the company a loan."
+    ],
+    "question": "Who of the below persons is not a creditor?",
+    "updated": "2026-02-19 22:11:18.049Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "No capital",
+    "created": "2026-02-19 22:11:54.912Z",
+    "footer": "",
+    "id": "4ek2uv7ok85zpxg",
+    "otherAnswers": [
+      "Liabilities",
+      "Debt",
+      "Equity"
+    ],
+    "question": "If a person goes to the commercial trade office and registers a company, this company has ...",
+    "updated": "2026-02-19 22:11:54.912Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Creditors",
+    "created": "2026-02-19 22:12:37.754Z",
+    "footer": "",
+    "id": "oidt6d24c8n4gen",
+    "otherAnswers": [
+      "Sponsors",
+      "Debtors",
+      "Donors"
+    ],
+    "question": "What do you call persons besides the owners of a company who provide capital to this company?",
+    "updated": "2026-02-19 22:12:37.754Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Time of payment",
+    "created": "2026-02-19 22:13:17.241Z",
+    "footer": "",
+    "id": "k131rqdj9stkjxq",
+    "otherAnswers": [
+      "Credit line",
+      "Target agreement",
+      "Free kick"
+    ],
+    "question": "If a supplier grants a suppliers credit to a customer for a certain period of time this period of time granted is called:",
+    "updated": "2026-02-19 22:13:17.241Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Credit line",
+    "created": "2026-02-19 22:14:05.369Z",
+    "footer": "",
+    "id": "vcpjjdn5lox97tc",
+    "otherAnswers": [
+      "Target agreement",
+      "Time of payment",
+      "Free kick"
+    ],
+    "question": "If a bank grants a customer a bank loan over a certain period of time, this is called a ...",
+    "updated": "2026-02-19 22:14:05.369Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Investment",
+    "created": "2026-02-19 22:14:37.831Z",
+    "footer": "",
+    "id": "v9624gbwwwk9yhr",
+    "otherAnswers": [
+      "Depreciation",
+      "Valuation",
+      "Financial statements"
+    ],
+    "question": "What is the technical term when a company purchases assets in order to work with it?",
+    "updated": "2026-02-19 22:14:37.831Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Debt",
+    "created": "2026-02-19 22:15:15.005Z",
+    "footer": "",
+    "id": "0xsxe9oijntkp9f",
+    "otherAnswers": [
+      "Equity",
+      "Risk capital",
+      "Loss capital"
+    ],
+    "question": "How to call capital, provided by the creditors of a company?",
+    "updated": "2026-02-19 22:15:15.005Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Capital investment",
+    "created": "2026-02-19 22:15:52.685Z",
+    "footer": "",
+    "id": "edzggopifxb3b68",
+    "otherAnswers": [
+      "Transfer",
+      "Capital withdrawal",
+      "Credit"
+    ],
+    "question": "How to call a transaction in which the owners of a company provide capital to their company?",
+    "updated": "2026-02-19 22:15:52.685Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Equity capital",
+    "created": "2026-02-19 22:16:40.084Z",
+    "footer": "",
+    "id": "wl5ok66dnsujqqk",
+    "otherAnswers": [
+      "Loss capital",
+      "Credit",
+      "Asset deposit"
+    ],
+    "question": "Money invested by owners in their company is called ...",
+    "updated": "2026-02-19 22:16:40.084Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Creditor",
+    "created": "2026-02-19 22:17:27.192Z",
+    "footer": "",
+    "id": "lbiz6ncz5ls0tvc",
+    "otherAnswers": [
+      "Firm",
+      "User",
+      "Debtor"
+    ],
+    "question": "Someone providing capital to a company without being its owner is referred to as:",
+    "updated": "2026-02-19 22:17:27.192Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Equity capital",
+    "created": "2026-02-19 22:18:33.864Z",
+    "footer": "",
+    "id": "0n0k2hqcmu6ljxh",
+    "otherAnswers": [
+      "Risk capital",
+      "Loss capital",
+      "Debt"
+    ],
+    "question": "What do you call the capital provided by owners to their company?",
+    "updated": "2026-02-19 22:18:33.864Z"
+  },
+  {
+    "chapter": "dr2w23v6mk00pw9",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "A negative final result increases debt.",
+    "created": "2026-02-19 22:19:49.054Z",
+    "footer": "",
+    "id": "65f3pyljkbo5hj1",
+    "otherAnswers": [
+      "A positive final result (net income) increases equity.",
+      "A negative final result (net loss) decreases equity.",
+      "The final result has no influence on debt."
+    ],
+    "question": "Select the wrong answer:",
+    "updated": "2026-02-19 22:19:49.054Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Equity in 02 is the sum of equity of 01 and net income of 01.",
+    "created": "2026-02-19 22:20:51.387Z",
+    "footer": "",
+    "id": "1q55ht8vgdqcd5x",
+    "otherAnswers": [
+      "Equity in 02 is the difference of equity of 01 and net income of 01.",
+      "Equity in 02 is the sum of equity of 00 and net income of 01.",
+      "Equity in 01 solely consists of net income of 00."
+    ],
+    "question": "Select the correct answer:",
+    "updated": "2026-02-19 22:20:51.387Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Financial situation",
+    "created": "2026-02-19 22:22:36.429Z",
+    "footer": "",
+    "id": "t23rqz03xguera1",
+    "otherAnswers": [
+      "Percent share",
+      "Managing director",
+      "Products"
+    ],
+    "question": "A business transaction changes a company‘s ...",
+    "updated": "2026-02-19 22:22:36.429Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Always applies.",
+    "created": "2026-02-19 22:24:12.642Z",
+    "footer": "",
+    "id": "fcyzwt3ggzffdaa",
+    "otherAnswers": [
+      "Never applies.",
+      "Applies to capital investments.",
+      "Applies to loans."
+    ],
+    "question": "The statement \"A business transaction has two impacts from a commercial point of view\"",
+    "updated": "2026-02-19 22:24:12.642Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Business transaction",
+    "created": "2026-02-19 22:25:17.833Z",
+    "footer": "",
+    "id": "44amdj3mosfrkon",
+    "otherAnswers": [
+      "Balance event",
+      "Firm event",
+      "Company event"
+    ],
+    "question": "An event causing a change in the financial situation of a company is called a ...",
+    "updated": "2026-02-19 22:25:17.833Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Companies",
+    "created": "2026-02-19 22:25:53.634Z",
+    "footer": "",
+    "id": "o0n5dc9dp1fj240",
+    "otherAnswers": [
+      "Owners",
+      "Creditors",
+      "Accountants"
+    ],
+    "question": "Double-entry bookkeeping considers the business transactions from the perspective of ...",
+    "updated": "2026-02-19 22:25:53.634Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Balance sheet items",
+    "created": "2026-02-19 22:26:33.507Z",
+    "footer": "",
+    "id": "ej0d919oo3etj0a",
+    "otherAnswers": [
+      "Total assets",
+      "Capital stock",
+      "Financial situation"
+    ],
+    "question": "What do you call fixed assets, current assets, equity and debt in general?",
+    "updated": "2026-02-19 22:26:33.507Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "2",
+    "created": "2026-02-19 22:27:42.116Z",
+    "footer": "",
+    "id": "kduhp0740zbqr2n",
+    "otherAnswers": [
+      "1",
+      "3",
+      "4"
+    ],
+    "question": "How many commercial impacts does a business transaction have at minimum?",
+    "updated": "2026-02-19 22:27:42.116Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "All",
+    "created": "2026-02-19 22:28:34.749Z",
+    "footer": "",
+    "id": "i6ce21049frpqyw",
+    "otherAnswers": [
+      "None",
+      "Asset-side only",
+      "Liabilities-side only"
+    ],
+    "question": "Which balance sheet items are designed with T-accounts?",
+    "updated": "2026-02-19 22:28:34.749Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Additions and subtractions",
+    "created": "2026-02-19 22:29:08.543Z",
+    "footer": "",
+    "id": "1sipy2qsectxx3x",
+    "otherAnswers": [
+      "Additions only",
+      "Subtractions only",
+      "Neither nor"
+    ],
+    "question": "What exactly is recorded on a T-account?",
+    "updated": "2026-02-19 22:29:08.543Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "It decreases.",
+    "created": "2026-02-19 22:29:43.357Z",
+    "footer": "",
+    "id": "da1no7c19w6307u",
+    "otherAnswers": [
+      "Nothing.",
+      "It increases.",
+      "All of it."
+    ],
+    "question": "What happens to the equity in case of a withdrawal?",
+    "updated": "2026-02-19 22:29:43.357Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Nothing.",
+    "created": "2026-02-19 22:32:17.573Z",
+    "footer": "",
+    "id": "nlh42s94tl15fd5",
+    "otherAnswers": [
+      "It decreases.",
+      "It increases.",
+      "All of it."
+    ],
+    "question": "What happens to the bank account when purchasing goods on credit?",
+    "updated": "2026-02-19 22:32:17.573Z"
+  },
+  {
+    "chapter": "hum0cbjc4ow5411",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "It increases.",
+    "created": "2026-02-19 22:32:53.993Z",
+    "footer": "",
+    "id": "nzimmdbapls405g",
+    "otherAnswers": [
+      "It decreases.",
+      "Nothing.",
+      "All of it."
+    ],
+    "question": "What happens to the equity in case of a capital investment?",
+    "updated": "2026-02-19 22:33:05.497Z"
   }
 ]
