@@ -3,25 +3,30 @@
         <span class="subtitle"> Checkpoint </span>
         <div class="content">
             <div class="badge">
-                <span class="data-entry">
-                    <span
-                        :class="{
-                            green: data.correct > data.total * 0.6,
-                            yellow: data.correct > data.total * 0.5 && data.correct <= data.total * 0.6,
-                            red: data.correct <= data.total * 0.5,
-                        }"
-                        >{{ Math.round((data.correct / data.total) * 100) }}%</span
-                    >
-                    <span class="small">Score</span>
-                </span>
-                <span class="data-entry">
-                    <span class="green">{{ data.correct }} / {{ data.total }}</span>
-                    <span class="small">Questions</span>
-                </span>
+                <div class="badge-stats">
+                    <span class="data-entry">
+                        <span
+                            :class="{
+                                green: data.correct > data.total * 0.6,
+                                yellow: data.correct > data.total * 0.5 && data.correct <= data.total * 0.6,
+                                red: data.correct <= data.total * 0.5,
+                            }"
+                            >{{ Math.round((data.correct / data.total) * 100) }}%</span
+                        >
+                        <span class="small">Score</span>
+                    </span>
+                    <span class="data-entry">
+                        <span class="green">{{ data.correct }} / {{ data.total }}</span>
+                        <span class="small">Questions</span>
+                    </span>
+                </div>
+                <a class="btn" @click="resetLecture">Reset Lecture</a>
             </div>
             <div class="badge badge-border">
-                <Pie :data="data" :options="{ onClick }" />
-                {{ props.chapter }}
+                <div class="chart-wrap">
+                    <Pie :data="data" :options="{ onClick }" />
+                </div>
+                <span class="chapter">{{ props.chapter }}</span>
             </div>
         </div>
     </div>
@@ -40,6 +45,7 @@ const props = defineProps<{
     chapter: string;
     chapterIndex: number;
     scrollBackTo: (lambda: (entry: QuizEntry) => boolean) => void;
+    scrollToPreviousCheckpoint: (reset: boolean) => void;
 }>();
 
 // placeholder data
@@ -83,6 +89,10 @@ const data = computed(() => {
         total: questions.length,
     };
 });
+
+function resetLecture() {
+    props.scrollToPreviousCheckpoint(true);
+}
 
 function onClick(_event: ChartEvent, elements: ActiveElement[]) {
     if (elements.length === 0) return;
@@ -141,6 +151,9 @@ p:has(.gitub-link) {
     justify-content: center;
     width: 100%;
     gap: 16px;
+    padding: 8px 8px 0;
+    margin-bottom: -8px;
+    box-sizing: border-box;
 
     .subtitle {
         margin-top: -25px;
@@ -152,8 +165,14 @@ p:has(.gitub-link) {
     .content {
         display: flex;
         flex-direction: row;
-        gap: 8px;
-        margin: 0 16px;
+        align-items: stretch;
+        gap: 16px;
+        margin: 0 8px 0 16px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            margin: 0;
+        }
     }
 
     transition:
@@ -163,19 +182,111 @@ p:has(.gitub-link) {
 }
 
 .badge {
-    flex: 1;
+    flex: 1 1 0;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    width: 30%;
-    max-width: 600px;
+    width: auto;
+    max-width: none;
     gap: 16px;
-    padding: 16px;
+
+    @media (max-width: 768px) {
+        max-width: none;
+    }
+
+    &:first-child {
+        flex: 1 1 0;
+    }
+
+    .badge-stats {
+        padding: 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .btn {
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 4px;
+        background-color: #eee;
+        width: 100%;
+        justify-content: center;
+
+        @media (max-width: 768px) {
+            padding: 8px;
+            min-height: 44px; // Minimum touch target size
+            align-items: center;
+        }
+
+        &:hover:not([disabled]) {
+            background-color: #ddd;
+        }
+
+        &.correct {
+            background-color: #c8e6c9;
+
+            &:hover:not([disabled]) {
+                background-color: #b7d5b8;
+            }
+        }
+
+        &.incorrect {
+            background-color: #ffcdd2;
+
+            &:hover:not([disabled]) {
+                background-color: #eebcc1;
+            }
+        }
+
+        transition: background-color 160ms ease;
+
+        display: flex;
+        padding: 8px;
+        font-size: 1.2em;
+        justify-content: center;
+
+        &.long-btn {
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            padding: 12px;
+            font-size: 1.5em;
+            min-height: 44px;
+        }
+    }
 
     &.badge-border {
+        flex: 0.95 1 0;
+        padding: 16px;
         border: 1px solid #ccc;
         border-radius: 8px;
+        justify-content: flex-start;
+        align-items: center;
+
+        .chart-wrap {
+            width: min(100%, 240px);
+            margin: 0 auto;
+        }
+
+        :deep(canvas) {
+            width: 100% !important;
+            height: auto !important;
+            display: block;
+        }
+
+        .chapter {
+            width: 100%;
+            text-align: center;
+            font-size: 1.05em;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
     }
 
     .data-entry {

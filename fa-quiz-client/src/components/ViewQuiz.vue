@@ -18,7 +18,14 @@
                 :proofAnswer="proofAnswer"
             />
             <ViewQuizLecture v-else-if="activeQuizEntry && activeQuizEntry.item === 'definition'" :subtitle="activeQuizEntry.subtitle" :content="activeQuizEntry.content" />
-            <ViewQuizCheckpoint v-else-if="activeQuizEntry && activeQuizEntry.item === 'chapter-finish'" :chapter="activeQuizEntry.title" :chapterIndex="activeQuizEntry.chapterIndex" :fullData="loadedQuestions" :scrollBackTo="scrollBackTo" />
+            <ViewQuizCheckpoint
+                v-else-if="activeQuizEntry && activeQuizEntry.item === 'chapter-finish'"
+                :chapter="activeQuizEntry.title"
+                :chapterIndex="activeQuizEntry.chapterIndex"
+                :fullData="loadedQuestions"
+                :scrollBackTo="scrollBackTo"
+                :scrollToPreviousCheckpoint="scrollToPreviousCheckpoint"
+            />
         </ViewQuizBody>
     </div>
 </template>
@@ -218,9 +225,18 @@ async function scrollToNextCheckpoint() {
 /**
  *
  */
-async function scrollToPreviousCheckpoint() {
+async function scrollToPreviousCheckpoint(resetLecturesOnTheWay = false) {
     do {
         await previousQuizPage();
+
+        if (resetLecturesOnTheWay) {
+            if (activeQuizEntry.value?.item === 'question') {
+                activeQuizEntry.value.selectedAnswers = [];
+                activeQuizEntry.value.stats.solved = false;
+                activeQuizEntry.value.stats.tries = 0;
+                activeQuizEntry.value.stats.triesWrong = 0;
+            }
+        }
     } while (activeQuizEntry.value && activeQuizEntry.value.item !== "chapter-finish" && nextQuestionExists.value);
 }
 
@@ -257,7 +273,7 @@ function proofAnswer(selected: number) {
 async function fetchChapter(resetActive = true) {
     try {
         // if chapter is already loaded, skip
-        if (loadedQuestions.value.some(q => q.item === 'chapter-finish' && q.chapterIndex === chapter.value)) {
+        if (loadedQuestions.value.some((q) => q.item === "chapter-finish" && q.chapterIndex === chapter.value)) {
             updatePagination();
             return;
         }
