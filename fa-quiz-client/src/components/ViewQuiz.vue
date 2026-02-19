@@ -13,7 +13,7 @@
                 :proofAnswer="proofAnswer"
             />
             <ViewQuizLecture v-else-if="activeQuizEntry && activeQuizEntry.item === 'definition'" :subtitle="activeQuizEntry.subtitle" :content="activeQuizEntry.content" />
-            <ViewQuizCheckpoint v-else-if="activeQuizEntry && activeQuizEntry.item === 'chapter-finish'" :chapter="activeQuizEntry.title" :chapterIndex="activeQuizEntry.chapterIndex" :fullData="loadedQuestions" />
+            <ViewQuizCheckpoint v-else-if="activeQuizEntry && activeQuizEntry.item === 'chapter-finish'" :chapter="activeQuizEntry.title" :chapterIndex="activeQuizEntry.chapterIndex" :fullData="loadedQuestions" :scrollBackTo="scrollBackTo" />
         </ViewQuizBody>
     </div>
 </template>
@@ -170,6 +170,41 @@ async function previousQuizPage() {
     previousQuizPage();
 }
 
+/**
+ * 
+ */
+// TODO fix me :( )
+async function scrollBackTo(lambda: (entry: QuizEntry) => boolean) {
+    let activeIndex = loadedQuestions.value.findIndex((q) => q.isActive);
+    if (activeIndex <= 0) {
+        return updatePagination();
+    }
+    
+    // deactivate
+    if (activeIndex !== -1) loadedQuestions.value[activeIndex].isActive = false;
+
+    let foundIndex = -1;
+    for (let i = activeIndex - 1; i >= 0; i -= 1) {
+        if (!lambda(loadedQuestions.value[i])) {
+            foundIndex = i;
+            break;
+        }
+    }
+
+    if (foundIndex === -1) {
+        loadedQuestions.value[activeIndex].isActive = true;
+        return updatePagination();
+    }
+
+    // activate match
+    loadedQuestions.value[foundIndex].isActive = true;
+    return updatePagination();
+}
+
+/**
+ * 
+ * @param id 
+ */
 function selectActiveQuestion(id: string) {
     for (const question of loadedQuestions.value) question.isActive = question.id === id;
     return updatePagination();
@@ -217,7 +252,7 @@ async function fetchChapter(resetActive = true) {
         if (chapterLectures.expand.lessons && chapterLectures.expand.lessons.length > 0) loadedQuestions.value.push(...chapterLectures.expand.lessons.map(getQuizEntryFromLecture));
 
         // load questions
-        const shuffled = chapterQuestions.map(q => getQuizEntryFromQuestion(q, chapter.value)).sort(() => Math.random() - 0.5);
+        const shuffled = chapterQuestions.map((q) => getQuizEntryFromQuestion(q, chapter.value)).sort(() => Math.random() - 0.5);
         loadedQuestions.value.push(...shuffled);
 
         // load checkpoint (new chapter announce)

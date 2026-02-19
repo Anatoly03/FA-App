@@ -37,8 +37,8 @@ function highlightWords(text: string) {
     let highlightedText = text;
 
     for (const word of wordsToHighlight) {
-        const regex = new RegExp(`(${word})`, "gi");
-        highlightedText = highlightedText.replace(regex, `<mark>$1</mark>`);
+        const regex = new RegExp(`\\b${word}\\b`, "gi");
+        highlightedText = highlightedText.replace(regex, `<mark>$&</mark>`);
     }
 
     return highlightedText;
