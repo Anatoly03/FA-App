@@ -48,7 +48,7 @@ const props = defineProps<{
     chapter: string;
     chapterIndex: number;
     scrollBackTo: (lambda: (entry: QuizEntry) => boolean) => void;
-    scrollToPreviousCheckpoint: (kind?: "all" | "wrong") => void;
+    scrollToPreviousCheckpoint: (kind: "all" | "wrong", chapterIndex: number) => void;
 }>();
 
 // placeholder data
@@ -94,7 +94,7 @@ const data = computed(() => {
 });
 
 function resetLecture(kind: "all" | "wrong") {
-    props.scrollToPreviousCheckpoint(kind);
+    props.scrollToPreviousCheckpoint(kind, props.chapterIndex);
 }
 
 function onClick(_event: ChartEvent, elements: ActiveElement[]) {

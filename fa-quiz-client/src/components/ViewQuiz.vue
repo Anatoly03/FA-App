@@ -225,7 +225,20 @@ async function scrollToNextCheckpoint() {
 /**
  *
  */
-async function scrollToPreviousCheckpoint(kind?: "all" | "wrong") {
+async function scrollToPreviousCheckpoint(kind?: "all" | "wrong", chapterIndex?: number) {
+    if (kind == "all" && chapterIndex !== undefined) {
+        await reloadChapter(chapterIndex);
+
+        const firstChapterQuestion = loadedQuestions.value.find((q) => q.item === "question" && q.chapterIndex === chapterIndex);
+        if (firstChapterQuestion) {
+            selectActiveQuestion(firstChapterQuestion.id);
+            return;
+        }
+
+        updatePagination();
+        return;
+    }
+
     do {
         await previousQuizPage();
 
@@ -268,6 +281,63 @@ function proofAnswer(selected: number) {
 }
 
 /**
+ * Fetch all entries for a specific chapter.
+ */
+async function fetchChapterEntries(chapterIndex: number) {
+    const chapterLectures = await pb.collection("chapters").getFirstListItem(`index = ${chapterIndex}`, {
+        requestKey: "chapter-" + chapterIndex,
+        expand: "lessons",
+    });
+
+    const chapterQuestions = await pb.collection("mc_questions").getFullList({
+        requestKey: "questions-chapter-" + chapterIndex,
+        expand: "chapter",
+        filter: `chapter.index = ${chapterIndex}`,
+    });
+
+    const entries: QuizEntry[] = [];
+
+    const lessons = chapterLectures.expand?.lessons;
+    if (lessons && lessons.length > 0) entries.push(...lessons.map(getQuizEntryFromLecture));
+
+    const shuffled = chapterQuestions.map((q) => getQuizEntryFromQuestion(q, chapterIndex)).sort(() => Math.random() - 0.5);
+    entries.push(...shuffled);
+
+    entries.push(getQuizEntryFromChapterFinish(chapterLectures, chapterIndex));
+
+    return {
+        chapterLectures,
+        entries,
+    };
+}
+
+/**
+ * Clear one loaded chapter and fetch it again from API.
+ */
+async function reloadChapter(chapterIndex: number) {
+    const previousCheckpointIndex = Math.max(
+        loadedQuestions.value.findIndex((q) => q.item === "chapter-finish" && q.chapterIndex === chapterIndex - 1),
+        0,
+    );
+    const chapterCheckpointIndex = loadedQuestions.value.findIndex((q) => q.item === "chapter-finish" && q.chapterIndex === chapterIndex);
+
+    const removeFrom = previousCheckpointIndex === -1 ? 0 : previousCheckpointIndex + 1;
+    const removeTo = chapterCheckpointIndex === -1 ? loadedQuestions.value.length - 1 : chapterCheckpointIndex;
+    const removeCount = removeTo >= removeFrom ? removeTo - removeFrom + 1 : 0;
+
+    if (removeCount > 0) {
+        loadedQuestions.value.splice(removeFrom, removeCount);
+    }
+
+    const { chapterLectures, entries } = await fetchChapterEntries(chapterIndex);
+    loadedQuestions.value.splice(removeFrom, 0, ...entries);
+
+    if (chapter.value === chapterIndex) {
+        chapterModel.value = chapterLectures;
+    }
+}
+
+/**
  * Fetch the next quiz from the API and set it to the `quiz` variable.
  */
 async function fetchChapter(resetActive = true) {
@@ -278,30 +348,9 @@ async function fetchChapter(resetActive = true) {
             return;
         }
 
-        // fetch all lectures for the current chapter
-        const chapterLectures = await pb.collection("chapters").getFirstListItem(`index = ${chapter.value}`, {
-            requestKey: "chapter-" + chapter.value,
-            expand: "lessons",
-        });
+        const { chapterLectures, entries } = await fetchChapterEntries(chapter.value);
         chapterModel.value = chapterLectures;
-
-        // fetch all quizzes for the current chapter
-        const chapterQuestions = await pb.collection("mc_questions").getFullList({
-            requestKey: "questions-chapter-" + chapter.value,
-            expand: "chapter",
-            filter: `chapter.index = ${chapter.value}`,
-        });
-
-        // load lectures
-        const lessons = chapterLectures.expand?.lessons;
-        if (lessons && lessons.length > 0) loadedQuestions.value.push(...lessons.map(getQuizEntryFromLecture));
-
-        // load questions
-        const shuffled = chapterQuestions.map((q) => getQuizEntryFromQuestion(q, chapter.value)).sort(() => Math.random() - 0.5);
-        loadedQuestions.value.push(...shuffled);
-
-        // load checkpoint (new chapter announce)
-        loadedQuestions.value.push(getQuizEntryFromChapterFinish(chapterLectures, chapter.value));
+        loadedQuestions.value.push(...entries);
 
         // select first
         if (resetActive) {
