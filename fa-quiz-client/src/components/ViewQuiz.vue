@@ -26,10 +26,11 @@
 <script setup lang="ts">
 import pb from "../service/pocketbase";
 import { computed, onMounted, ref } from "vue";
-import ViewQuizPagination from "./ViewQuizPagination.vue";
-import ViewQuizBody from "./ViewQuizBody.vue";
+import { useLocalStorage } from "@vueuse/core";
 import { QuizEntry } from "../quiz";
 import { RecordModel } from "pocketbase";
+import ViewQuizPagination from "./ViewQuizPagination.vue";
+import ViewQuizBody from "./ViewQuizBody.vue";
 import ViewQuizLecture from "./ViewQuizLecture.vue";
 import ViewQuizQuestion from "./ViewQuizQuestion.vue";
 import ViewQuizCheckpoint from "./ViewQuizCheckpoint.vue";
@@ -43,7 +44,7 @@ const chapterModel = ref<RecordModel | null>(null);
 /**
  * Already finished quiz answers will be added to pagination.
  */
-const loadedQuestions = ref<QuizEntry[]>([]);
+const loadedQuestions = useLocalStorage<QuizEntry[]>("quiz_entries", []);
 const paginationRef = ref<InstanceType<typeof ViewQuizPagination> | null>(null);
 const nextQuestionExists = ref(true);
 
@@ -255,6 +256,12 @@ function proofAnswer(selected: number) {
  */
 async function fetchChapter(resetActive = true) {
     try {
+        // if chapter is already loaded, skip
+        if (loadedQuestions.value.some(q => q.item === 'chapter-finish' && q.chapterIndex === chapter.value)) {
+            updatePagination();
+            return;
+        }
+
         // fetch all lectures for the current chapter
         const chapterLectures = await pb.collection("chapters").getFirstListItem(`index = ${chapter.value}`, {
             requestKey: "chapter-" + chapter.value,
