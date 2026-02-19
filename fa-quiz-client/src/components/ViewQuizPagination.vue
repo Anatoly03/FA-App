@@ -13,9 +13,13 @@
                 @keydown.space.stop="() => props.selectActiveQuestion(question.id)"
             >
                 <div class="question" v-if="question.item=='question'">
-                    <font-awesome-icon v-if="!question.stats.solved && question.stats.triesWrong === 0" icon="fa-regular fa-circle" class="question" />
-                    <font-awesome-icon v-else-if="question.stats.triesWrong === 0" icon="fa-solid fa-circle-check" />
-                    <font-awesome-icon v-else icon="fa-solid fa-circle-xmark" />
+                    <font-awesome-icon icon="fa-solid fa-face fa-face-laugh-beam" v-if="question.isActive && question.stats.solved && question.stats.triesWrong === 0" />
+                    <font-awesome-icon icon="fa-solid fa-face fa-face-meh" v-else-if="question.isActive && question.stats.triesWrong == 1" />
+                    <font-awesome-icon icon="fa-solid fa-face fa-face-frown" v-else-if="question.isActive && question.stats.triesWrong > 1" />
+                    <font-awesome-icon icon="fa-regular fa-circle-dot" v-else-if="question.isActive" />
+                    <font-awesome-icon icon="fa-regular fa-circle" class="question" v-else-if="!question.stats.solved && question.stats.triesWrong === 0" />
+                    <font-awesome-icon icon="fa-solid fa-circle-check" v-else-if="question.stats.triesWrong === 0" />
+                    <font-awesome-icon icon="fa-solid fa-circle-xmark" v-else />
                 </div>
                 <div class="question" v-if="question.item=='definition'">
                     <font-awesome-icon icon="fa-regular fa-compass" />
@@ -169,12 +173,15 @@ watch(() => props.activeQuestion, scrollToActive);
         }
     }
 
-    .fa-circle-check {
+    .fa-circle-check,
+    .fa-face-laugh-beam {
         color: #0a0;
     }
 
+    .fa-face-meh,
+    .fa-face-frown,
     .fa-circle-xmark {
-        color: #a00;
+        color: #ff4000;
     }
 
     .fa-cube {
@@ -185,6 +192,13 @@ watch(() => props.activeQuestion, scrollToActive);
     .fa-compass {
         font-size: 1.5em;
         pointer-events: none;
+    }
+
+    .fa-face-laugh-beam,
+    .fa-face-meh,
+    .fa-face-frown,
+    .fa-circle-dot {
+        font-size: 1.5em;
     }
 
     .quiz-paginationentry {

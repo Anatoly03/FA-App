@@ -1,7 +1,12 @@
 <template>
     <div class="view-quiz">
         <ViewQuizPagination ref="paginationRef" :loadedQuestions="loadedQuestions" :activeQuestion="activeQuizEntry?.id ?? null" :selectActiveQuestion="selectActiveQuestion" />
-        <ViewQuizBody :onNext="nextQuestionExists ? nextQuizPage : undefined" :onBack="activeQuizEntryIndex > 0 ? previousQuizPage : undefined">
+        <ViewQuizBody
+            :onNext="nextQuestionExists ? nextQuizPage : undefined"
+            :onBack="activeQuizEntryIndex > 0 ? previousQuizPage : undefined"
+            :onFastNext="nextQuestionExists ? scrollToNextCheckpoint : undefined"
+            :onFastBack="activeQuizEntryIndex > 0 ? scrollToPreviousCheckpoint : undefined"
+        >
             <ViewQuizQuestion
                 v-if="activeQuizEntry && activeQuizEntry.item === 'question'"
                 :questionModel="activeQuizEntry"
@@ -170,7 +175,7 @@ async function previousQuizPage() {
 }
 
 /**
- * 
+ *
  */
 // TODO fix me :( )
 async function scrollBackTo(lambda: (entry: QuizEntry) => boolean) {
@@ -178,7 +183,7 @@ async function scrollBackTo(lambda: (entry: QuizEntry) => boolean) {
     if (activeIndex <= 0) {
         return updatePagination();
     }
-    
+
     // deactivate
     if (activeIndex !== -1) loadedQuestions.value[activeIndex].isActive = false;
 
@@ -201,8 +206,26 @@ async function scrollBackTo(lambda: (entry: QuizEntry) => boolean) {
 }
 
 /**
- * 
- * @param id 
+ *
+ */
+async function scrollToNextCheckpoint() {
+    do {
+        await nextQuizPage();
+    } while (activeQuizEntry.value && activeQuizEntry.value.item !== "chapter-finish" && nextQuestionExists.value);
+}
+
+/**
+ *
+ */
+async function scrollToPreviousCheckpoint() {
+    do {
+        await previousQuizPage();
+    } while (activeQuizEntry.value && activeQuizEntry.value.item !== "chapter-finish" && nextQuestionExists.value);
+}
+
+/**
+ *
+ * @param id
  */
 function selectActiveQuestion(id: string) {
     for (const question of loadedQuestions.value) question.isActive = question.id === id;
