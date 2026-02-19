@@ -844,5 +844,725 @@
     ],
     "question": "Which of the following cost formulas is not permitted under IAS 2?",
     "updated": "2026-02-19 10:55:24.685Z"
+  },
+  {
+    "chapter": "eg8rimxfcn5hxx5",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Lower of cost and net realisable value",
+    "created": "2026-02-19 14:17:02.749Z",
+    "footer": "",
+    "id": "v0einwf89gdlz32",
+    "otherAnswers": [
+      "Lower of cost and carrying value",
+      "Lower of fair value and net realisable value",
+      "Cost of production"
+    ],
+    "question": "Inventories are measured at:",
+    "updated": "2026-02-19 14:17:02.749Z"
+  },
+  {
+    "chapter": "eg8rimxfcn5hxx5",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Tangible assets lying in the store, which are intended for sale",
+    "created": "2026-02-19 14:19:01.940Z",
+    "footer": "",
+    "id": "qtwlzxjbwca8e5v",
+    "otherAnswers": [
+      "Machinery used in the production process which is for sale",
+      "Productions Plants",
+      "Intangible assets used in the production process, but not intended for sale"
+    ],
+    "question": "Inventories include:",
+    "updated": "2026-02-19 14:19:01.940Z"
+  },
+  {
+    "chapter": "eg8rimxfcn5hxx5",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... Net realisable value",
+    "created": "2026-02-19 14:19:39.700Z",
+    "footer": "",
+    "id": "0ijwzi76c2jj0xi",
+    "otherAnswers": [
+      "... Fair value",
+      "... Market value",
+      "... Recoverable amount"
+    ],
+    "question": "Inventory should be measured at the lower of cost and...",
+    "updated": "2026-02-19 14:19:39.700Z"
+  },
+  {
+    "chapter": "eg8rimxfcn5hxx5",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... recognised as an expense in the period in which the write-down occurs",
+    "created": "2026-02-19 14:20:48.452Z",
+    "footer": "",
+    "id": "t2r4vvsqg3fzafc",
+    "otherAnswers": [
+      "... recognized in the other comprehensive income",
+      "... recognized as a current liability in the balance sheet",
+      "... recognised as an expense in the subsequent period in which such write-down is warranted"
+    ],
+    "question": "Any amount of write-down of inventories to net realisable value should be...",
+    "updated": "2026-02-19 14:20:48.452Z"
+  },
+  {
+    "chapter": "eg8rimxfcn5hxx5",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "The cost of Inventory is $3.700 and the cost of sales is $1.200",
+    "created": "2026-02-19 14:21:58.092Z",
+    "footer": "",
+    "id": "xq2qprlp1vqjsym",
+    "otherAnswers": [
+      "The cost of Inventory is $3.7000 and the cost of sales is $1.000",
+      "The cost of Inventory is $3.900 and the cost of sales is $1.400",
+      "The cost of Inventory is $3.700 and the cost of sales is $4.900"
+    ],
+    "question": "Zippy Machines is in the business of procuring raw materials and sells them to international markets. During the year, the Company bought four tons of raw materials costing 1.200€, 1.400€, 1.300€ and 1.000€ respectively.\r\nDuring the year it sold only one tone for 1.400€ and follows the FIFO method of valuation. Which of the following statements is TRUE?",
+    "updated": "2026-02-19 14:21:58.092Z"
+  },
+  {
+    "chapter": "eg8rimxfcn5hxx5",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Net realisable value",
+    "created": "2026-02-19 14:23:07.319Z",
+    "footer": "",
+    "id": "nvvfpl2o07ivian",
+    "otherAnswers": [
+      "Recoverable Amount",
+      "Market value",
+      "Fair value"
+    ],
+    "question": "The estimated selling price in the ordinary course of business, less any completion costs and costs of sale is called...",
+    "updated": "2026-02-19 14:23:07.319Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "​338.800€",
+    "created": "2026-02-19 14:26:35.258Z",
+    "footer": "To-Do: add auto equation generator: 284.400+842.800-(985.500/1,25)",
+    "id": "bt1ah1n5n0xx52j",
+    "otherAnswers": [
+      "230.000€",
+      "388.075€",
+      "229.984€"
+    ],
+    "question": "A retail trader fixes his sale price by adding​ 25% to the cost of every item purchased. You are informed that opening inventory was 284.400€, purchases were 842.800€ (equal purchase prices for all items) and sales were ​985.500€. Closing inventory should be:",
+    "updated": "2026-02-19 14:30:10.543Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "37.500€",
+    "created": "2026-02-19 14:29:52.046Z",
+    "footer": "To-Do: add auto equation generator: ((10.000*3+5.000*4+5.000*5)/20.000)*10.000, add table",
+    "id": "gy8rg1cm9d6gxln",
+    "otherAnswers": [
+      "30.000€",
+      "56.000€",
+      "40.000€"
+    ],
+    "question": "Handy Ltd values its closing inventory using the weighted average method. What is the amount for the cost of goods sold?",
+    "updated": "2026-02-19 14:29:52.046Z"
+  },
+  {
+    "chapter": "eg8rimxfcn5hxx5",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... average cost",
+    "created": "2026-02-19 14:31:15.569Z",
+    "footer": "",
+    "id": "y5n1743es6mraa1",
+    "otherAnswers": [
+      "... FIFO",
+      "... LIFO",
+      "... none of these"
+    ],
+    "question": "In a period of rising prices, the inventory method which is allowed under IFRS and tends to give the highest reported cost of goods sold is:",
+    "updated": "2026-02-19 14:31:15.569Z"
+  },
+  {
+    "chapter": "4a9a9l5hitzl4w7",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "A liability with uncertain amount or timing.",
+    "created": "2026-02-19 14:33:24.923Z",
+    "footer": "",
+    "id": "z1nl2gfuy5o22mo",
+    "otherAnswers": [
+      "A contingent liability with uncertain future cash flows.",
+      "A economic benefit to a third party due to a future event.",
+      "An entry in other comprehensive income."
+    ],
+    "question": "What is a provision?",
+    "updated": "2026-02-19 14:33:24.923Z"
+  },
+  {
+    "chapter": "4a9a9l5hitzl4w7",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... that it is identifiable.",
+    "created": "2026-02-19 14:34:20.395Z",
+    "footer": "",
+    "id": "njs32l6hza7x2kl",
+    "otherAnswers": [
+      "... that the amount can be measured reliably.",
+      "... that the outflow of economic benefits is probable.",
+      "... that it results from a past event."
+    ],
+    "question": "The recognition of a provision does not require ...",
+    "updated": "2026-02-19 14:34:20.395Z"
+  },
+  {
+    "chapter": "4a9a9l5hitzl4w7",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "A management decisions to repair a machine.",
+    "created": "2026-02-19 14:35:58.594Z",
+    "footer": "",
+    "id": "vr2b89mo5lsxeb9",
+    "otherAnswers": [
+      "A sale contract for products with warranties.",
+      "A pattern of past practice of paying bonuses to employees.",
+      "A court order to decontaminate land."
+    ],
+    "question": "Which of the following is not a present obligation from which a provision can result ?",
+    "updated": "2026-02-19 14:36:05.561Z"
+  },
+  {
+    "chapter": "4a9a9l5hitzl4w7",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Possible but not probable and not remote.",
+    "created": "2026-02-19 14:37:03.109Z",
+    "footer": "",
+    "id": "xpq5r1wn77hyw62",
+    "otherAnswers": [
+      "Probable but not remote and not possible.",
+      "Remote but not possible and not probable.",
+      "None of the listed."
+    ],
+    "question": "What are the probability requirements for the outflow of future economic benefits for a contingent liability?",
+    "updated": "2026-02-19 14:37:03.109Z"
+  },
+  {
+    "chapter": "4a9a9l5hitzl4w7",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... best estimate.",
+    "created": "2026-02-19 14:37:32.602Z",
+    "footer": "",
+    "id": "jc3s48brlgtxmw4",
+    "otherAnswers": [
+      "... cost.",
+      "... probability weighted fair value.",
+      "... net realisable value."
+    ],
+    "question": "Provisions are measured at ...",
+    "updated": "2026-02-19 14:37:32.602Z"
+  },
+  {
+    "chapter": "4a9a9l5hitzl4w7",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... the estimated cash ouflow with the highest likelihood.",
+    "created": "2026-02-19 14:38:13.771Z",
+    "footer": "",
+    "id": "ncn2t8dyu7bmu9k",
+    "otherAnswers": [
+      "... the most likely cash inflow.",
+      "... the probability-weighted expected value.",
+      "... the most likely fair value."
+    ],
+    "question": "If the risks specific to the liability and the time value\r\nof money are ignored a provision for a lawsuit is measured at ...",
+    "updated": "2026-02-19 14:38:13.771Z"
+  },
+  {
+    "chapter": "",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "15,000€.",
+    "created": "2026-02-19 14:39:21.355Z",
+    "footer": "To-Do: add auto equation generator",
+    "id": "7u62lqb1gc2gej5",
+    "otherAnswers": [
+      "5,000€.",
+      "10,000€.",
+      "20,000€."
+    ],
+    "question": "An entity sells 2,000 units of a product with warranties under which the entity will repair any manufacturing defects that become apparent within the first six months after purchase. If a minor defect is detected in a product, estimated repair costs of 50€ will result. If a major defect is detected in a product, estimated repair costs of 100€ will result. The entity’s experience together with its future expectations indicate that 90 per cent of the goods sold have no defects, 5 per cent of the goods sold have minor defects and 5 per cent of the goods sold have major defects. What is the value of the provision to be recognized?",
+    "updated": "2026-02-19 14:39:21.355Z"
+  },
+  {
+    "chapter": "4a9a9l5hitzl4w7",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "DR provision 1 Mio. CR income 1 Mio.",
+    "created": "2026-02-19 14:40:01.496Z",
+    "footer": "",
+    "id": "lqixwe0sigrqw0o",
+    "otherAnswers": [
+      "DR income 1 Mio. CR provision 1 Mio.",
+      "DR provision 1 Mio. CR cash 1 Mio.",
+      "DR provision 1 Mio. CR expenses 1 Mio."
+    ],
+    "question": "An entity wins a lawsuit in 2016 for which a provision of 1 Mio. € was recognized in 2015 for the case of a loss. What are the necessary booking entries?",
+    "updated": "2026-02-19 14:40:01.496Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "A contract that gives rise to a financial liability or equity instrument of one entity and a financial asset of another entity.",
+    "created": "2026-02-19 14:41:13.178Z",
+    "footer": "",
+    "id": "d6qcnz2w5rb0o62",
+    "otherAnswers": [
+      "A firm policy that gives rise to a financial asset of one entity and a financial liability or equity instrument of another entity.",
+      "A contract that results in a financial asset of one entity and a liability instrument of another entity.",
+      "A contract that gives rise to equity instruments of two entities."
+    ],
+    "question": "What is a financial instrument?",
+    "updated": "2026-02-19 14:41:13.178Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Accounts payables.",
+    "created": "2026-02-19 14:42:11.964Z",
+    "footer": "",
+    "id": "y4iw41emjrcg853",
+    "otherAnswers": [
+      "Cash.",
+      "A forward with a positive value.",
+      "An option to sell shares of an entity."
+    ],
+    "question": "Which of the following is not a financial asset?",
+    "updated": "2026-02-19 14:42:11.964Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Buying an option for selling shares of an entity for 50 Euros and current market value of the shares is 60 Euros.",
+    "created": "2026-02-19 14:43:09.975Z",
+    "footer": "",
+    "id": "bdyxgvaz48yi4dz",
+    "otherAnswers": [
+      "Issuing a 10-year industry bond",
+      "Being granted a loan of 1 Mio. Euros by Deutsche Bank.",
+      "A forward for buying crude oil in 1 year for 50 Euros per barrel and the current market value of 1 barrel of crude oil is 40 Euros."
+    ],
+    "question": "Which of the following does not give rise to a financial liability?",
+    "updated": "2026-02-19 14:43:09.975Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... amortised cost.",
+    "created": "2026-02-19 14:43:51.899Z",
+    "footer": "",
+    "id": "jhc89pe88846ayg",
+    "otherAnswers": [
+      "... fair value through other comprehensive income.",
+      "... fair value through profit and loss.",
+      "... net realisable value."
+    ],
+    "question": "A debt instrument for which the business model is hold the financial instrument and collect the contractual cash flows and for which the SSPI criterion is fulfilled is measured at ...",
+    "updated": "2026-02-19 14:43:51.899Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... fair value through profit and loss.",
+    "created": "2026-02-19 14:44:25.691Z",
+    "footer": "",
+    "id": "usqdb4car8wgjwh",
+    "otherAnswers": [
+      "... amortised cost.",
+      "... fair value through other comprehensive income.",
+      "... net realisable value."
+    ],
+    "question": "Forward contracts are measured at ...",
+    "updated": "2026-02-19 14:44:25.691Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "... only at fair value through profit and loss.",
+    "created": "2026-02-19 14:45:23.650Z",
+    "footer": "",
+    "id": "by4jwdzwdl2ly7i",
+    "otherAnswers": [
+      "... only at amortised cost.",
+      "... only at fair value through other comprehensive income.",
+      "... fair value through profit and loss or fair value through other comprehensive income."
+    ],
+    "question": "Shares which are held for trading are measured ...",
+    "updated": "2026-02-19 14:45:23.650Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": " ... quoted market prices.",
+    "created": "2026-02-19 14:46:04.672Z",
+    "footer": "",
+    "id": "nljqr7ffzz5bd33",
+    "otherAnswers": [
+      "... discounted future cashflows.",
+      "... results of an valuation model.",
+      "... best estimates."
+    ],
+    "question": "The best measure for the fair value of financial instruments (level 1) are...",
+    "updated": "2026-02-19 14:46:04.672Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "DR expenses 2 Mio., CR financial liability 2 Mio.",
+    "created": "2026-02-19 14:46:55.811Z",
+    "footer": "",
+    "id": "f9ebgp4y8hr9f9z",
+    "otherAnswers": [
+      "DR expenses 2 Mio., CR financial asset 2 Mio.",
+      "DR other comprehensive income, 2 Mio., CR financial liability 2 Mio.",
+      "DR other comprehensive income 2 Mio. CR financial asset 2 Mio."
+    ],
+    "question": "A forward is measured at the balance sheet date. The value was – 2 Mio. at the last balance sheet date and now is – 4 Mio. What are the booking entries?",
+    "updated": "2026-02-19 14:46:55.811Z"
+  },
+  {
+    "chapter": "zlwndd05kdq4bw4",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "DR financial asset 1 Mio., CR other comprehensive income 1 Mio.",
+    "created": "2026-02-19 14:47:07.117Z",
+    "footer": "",
+    "id": "s6hg693a8ny6jqu",
+    "otherAnswers": [
+      "DR income 1 Mio., CR financial asset 1 Mio.",
+      "DR other comprehensive income, 1 Mio., CR financial asset 1 Mio.",
+      "DR other comprehensive income 1 Mio. CR financial liability 1 Mio."
+    ],
+    "question": "Shares are measured at FVTOCI. The value increased from 3 Mio. to 4 Mio. In comparison to last year. What are the booking entries?",
+    "updated": "2026-02-19 14:47:31.855Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "...has a range of meanings",
+    "created": "2026-02-19 14:48:38.824Z",
+    "footer": "",
+    "id": "dlbsmasf3uvzmrc",
+    "otherAnswers": [
+      "...is illegal.",
+      "...is considered to always be harmful to shareholders.",
+      "...is a valuation technique for intangible assets."
+    ],
+    "question": "Earnings management...",
+    "updated": "2026-02-19 14:48:38.824Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Taking a big bath",
+    "created": "2026-02-19 14:49:17.736Z",
+    "footer": "",
+    "id": "1qpr6uyonvx54pj",
+    "otherAnswers": [
+      "Taking a shower",
+      "Jungle Book",
+      "Income Balance"
+    ],
+    "question": "Which of the following is an example of an earnings management pattern?",
+    "updated": "2026-02-19 14:49:17.736Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "The choice by a manager of accounting policies so as to achieve some specific objective.",
+    "created": "2026-02-19 14:49:57.676Z",
+    "footer": "",
+    "id": "f66fnyjlv00ui5y",
+    "otherAnswers": [
+      "Discussions with stockholder",
+      "Marketing during slow periods to try and increase sales.",
+      "A financial ratio used to better understand the relationship between earnings and sales"
+    ],
+    "question": "Earnings management is:",
+    "updated": "2026-02-19 14:49:57.676Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Real earnings management takes place during the fiscal year.",
+    "created": "2026-02-19 14:50:35.970Z",
+    "footer": "",
+    "id": "dw4ullhgn25ld76",
+    "otherAnswers": [
+      "Choosing a specific write-off period is an example for real earnings management",
+      "Accounting earnings management is illegal",
+      "Accounting earnings management takes place during the fiscal year."
+    ],
+    "question": "Which of the following statements is true:",
+    "updated": "2026-02-19 14:50:35.970Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Sale-and-lease-back",
+    "created": "2026-02-19 14:51:17.748Z",
+    "footer": "",
+    "id": "nvp593svb5ts11w",
+    "otherAnswers": [
+      "Estimating residual value",
+      "Determining a valuation model for property, plant and equipment.",
+      "Not to publish the financial statement"
+    ],
+    "question": "Which of the following can be an example for real earnings management?",
+    "updated": "2026-02-19 14:51:17.748Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "...flexibility in accounting standards where choices are specified.",
+    "created": "2026-02-19 14:51:51.543Z",
+    "footer": "",
+    "id": "2muatxtxzacgcdp",
+    "otherAnswers": [
+      "...flexibility in accounting standards where there is no choice.",
+      "...flexibility in accounting standards where choices are not specified.",
+      "...real earnings management."
+    ],
+    "question": "The choice between first-in, first-out or weighted average cost (inventories- IAS 2) is an example for...",
+    "updated": "2026-02-19 14:51:51.543Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "All of the listed.",
+    "created": "2026-02-19 14:53:19.401Z",
+    "footer": "To-Do: rethink multiple choice",
+    "id": "j0xv2eg62dtlplf",
+    "otherAnswers": [
+      "Market data",
+      "Financial disclosure",
+      "Economic data"
+    ],
+    "question": "Financial statement analysis makes use of:",
+    "updated": "2026-02-19 14:53:19.401Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "...gross profit.",
+    "created": "2026-02-19 14:53:55.852Z",
+    "footer": "",
+    "id": "dw5qk8wbczcc34e",
+    "otherAnswers": [
+      "...net income.",
+      "...sales turnover.",
+      "...EBITDA."
+    ],
+    "question": "Deducing cost of goods sold from sales results in...",
+    "updated": "2026-02-19 14:53:55.852Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "...cash flow from operating activities and cash flow from investing activities",
+    "created": "2026-02-19 14:54:28.824Z",
+    "footer": "",
+    "id": "wqmylukawfyxlt2",
+    "otherAnswers": [
+      "...net income and cash flow from financing",
+      "...EBITDA and sales",
+      "...net cash flow and cash flow from operating activities"
+    ],
+    "question": "The free cash flow combines ...",
+    "updated": "2026-02-19 14:54:28.824Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "...the portion of sales that is a profit.",
+    "created": "2026-02-19 14:55:15.027Z",
+    "footer": "",
+    "id": "vb5xd6qmdzfal7x",
+    "otherAnswers": [
+      "...EBITDA minus depreciation and amortization",
+      "...comparison of profit with the investment necessary to generate the profit",
+      "...the portion of profit that is sales"
+    ],
+    "question": "A margin is...",
+    "updated": "2026-02-19 14:55:20.640Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Net income / Average shareholders′ equity",
+    "created": "2026-02-19 14:57:51.983Z",
+    "footer": "The slash (/) in the answers stays for a long fraction. I.e. `A/B` means A is divided by B.",
+    "id": "gswvodhtvqfno8l",
+    "otherAnswers": [
+      "Net income / Average Net Cash Flow",
+      "Total debt / Total shareholders' equity",
+      "Total assets / Total shareholders' equity"
+    ],
+    "question": "Which returns reflects how much profit a company generates with the money shareholder have invested?",
+    "updated": "2026-02-19 14:57:51.983Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "...gross margin",
+    "created": "2026-02-19 14:58:34.786Z",
+    "footer": "",
+    "id": "sbl6ktjwmg60yv0",
+    "otherAnswers": [
+      "... net profit margin",
+      "...gross efficiency",
+      "... EBIT"
+    ],
+    "question": "Dividing the gross profit by sales results in...",
+    "updated": "2026-02-19 14:58:34.786Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Sales / Total assets",
+    "created": "2026-02-19 15:00:18.413Z",
+    "footer": "The slash (/) in the answers stays for a long fraction. I.e. `A/B` means A is divided by B.",
+    "id": "m4umfilaq0akl2m",
+    "otherAnswers": [
+      "EBIT / Capital Employed",
+      "Total debt / Total assets",
+      "Current assets / Current liabilities"
+    ],
+    "question": "Which ratio reflects the average number of times per period that the money invested in assets is converted into sales?",
+    "updated": "2026-02-19 15:00:18.413Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Current assets / Current liabilities",
+    "created": "2026-02-19 15:01:33.368Z",
+    "footer": "The slash (/) in the answers stays for a long fraction. I.e. `A/B` means A is divided by B.",
+    "id": "vk1gr76x46pk5ca",
+    "otherAnswers": [
+      "PPE Investments / PPE Deprication",
+      "Total debt / Total assets",
+      "Cost of goods sold / Average inventory"
+    ],
+    "question": "Which Ratio can be used to examine the firm’s liquidity",
+    "updated": "2026-02-19 15:01:33.368Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "The financial position on a particular date; i.e. assets, liabilities and shareholders' equity",
+    "created": "2026-02-19 15:02:58.153Z",
+    "footer": "",
+    "id": "gt95v56h4cvcnzw",
+    "otherAnswers": [
+      "Supplementary information on a firm’s business model",
+      "The profit or loss for the accounting period",
+      "Compensation plans for the board of directors"
+    ],
+    "question": "What information can be found in a balance sheet?",
+    "updated": "2026-02-19 15:02:58.153Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "The firm is growing",
+    "created": "2026-02-19 15:04:32.770Z",
+    "footer": "The slash (/) in the question stays for a long fraction. I.e. `A/B` means A is divided by B.",
+    "id": "t3yzp00mragt9tx",
+    "otherAnswers": [
+      "The firm is shrinking",
+      "The firm is bankrupt",
+      "The firm conducts earnings management in an illegal way"
+    ],
+    "question": "A reinvestment rate above 1 indicates? Recall, the Reinvestment Rate (PPE) = PPE Investments / PPE Depriciation",
+    "updated": "2026-02-19 15:04:32.770Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Revenues, expenditures, net profit or loss",
+    "created": "2026-02-19 15:05:11.887Z",
+    "footer": "",
+    "id": "k3iptyj6zv6xwvd",
+    "otherAnswers": [
+      "Daily stock prices",
+      "A reconciliation of the beginning and ending balances of all revenue accounts.",
+      "CEO entrance date"
+    ],
+    "question": "What information can be found in an income statement?",
+    "updated": "2026-02-19 15:05:11.887Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Change in share price, dividends",
+    "created": "2026-02-19 15:06:04.108Z",
+    "footer": "",
+    "id": "vbepto3udeq5zrc",
+    "otherAnswers": [
+      "EBIDT, EBITDA, and net income",
+      "Total assets, net income, dividends",
+      "Change in share price, net income"
+    ],
+    "question": "The Total Shareholder Return includes:",
+    "updated": "2026-02-19 15:06:10.144Z"
+  },
+  {
+    "chapter": "k26h3ao2dojgp21",
+    "collectionId": "pbc_2001502728",
+    "collectionName": "mc_questions",
+    "correctAnswer": "Horizontal balance sheet structure",
+    "created": "2026-02-19 15:07:21.931Z",
+    "footer": "",
+    "id": "v9a9qafuast481a",
+    "otherAnswers": [
+      "Financial profitability",
+      "Total shareholder return",
+      "Interest coverage"
+    ],
+    "question": "The Equity-to-Fixed Assets Ratio can be used to examine the firm’s ...",
+    "updated": "2026-02-19 15:07:21.931Z"
   }
 ]

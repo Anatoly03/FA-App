@@ -38,6 +38,7 @@ function handleKeyboard(event: KeyboardEvent) {
             break;
         case "ArrowRight":
         case 'd':
+        case 'Enter':
             event.preventDefault();
             props.onNext?.();
             break;
