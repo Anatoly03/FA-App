@@ -1,5 +1,6 @@
 
 # Generate client
+npm install
 npm run build
 sudo cp -r fa-quiz-client/dist/* /var/www/fa-quiz-client/
 

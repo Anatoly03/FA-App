@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 
 	_ "fa-quiz-api/migrations"
@@ -16,18 +17,41 @@ import (
 
 var App *pocketbase.PocketBase
 
+func getSyncDir() string {
+	if syncDir := strings.TrimSpace(os.Getenv("PB_SYNC_DIR")); syncDir != "" {
+		return syncDir
+	}
+
+	wdCandidate := filepath.Join(".", "pb_sync")
+	if info, err := os.Stat(wdCandidate); err == nil && info.IsDir() {
+		return wdCandidate
+	}
+
+	if executablePath, err := os.Executable(); err == nil {
+		execCandidate := filepath.Join(filepath.Dir(executablePath), "pb_sync")
+		if info, statErr := os.Stat(execCandidate); statErr == nil && info.IsDir() {
+			return execCandidate
+		}
+	}
+
+	return wdCandidate
+}
+
 // Sync all records to localstore and upload to git.
 func UploadData(e *core.RecordEvent) error {
 	if err := e.Next(); err != nil {
 		return err
 	}
-
+	syncDir := getSyncDir()
+	if mkdirErr := os.MkdirAll(syncDir, 0755); mkdirErr != nil {
+		log.Printf("Error ensuring sync dir %q: %v", syncDir, mkdirErr)
+		return mkdirErr
+	}
 	records, err := e.App.FindAllRecords(e.Record.Collection().Id)
 	if err != nil {
 		log.Printf("Error fetching records: %v", err)
 		return err
 	}
-
 
 	// // remove fields 'created' and 'updated' to avoid unnecessary diffs in git
 	// // we need to map records to []map[string]any to remove these fields, because Record struct has them as time.Time and they will be always different
@@ -44,7 +68,7 @@ func UploadData(e *core.RecordEvent) error {
 	// jsonData, err := json.MarshalIndent(mappedRecords, "", "  ")
 	jsonData, err := json.MarshalIndent(records, "", "  ")
 
-	filePath := "pb_sync/" + e.Record.Collection().Name + ".json"
+	filePath := filepath.Join(syncDir, e.Record.Collection().Name+".json")
 	if err = os.WriteFile(filePath, jsonData, 0644); err != nil {
 		log.Printf("Error writing file: %v", err)
 		return err
@@ -55,14 +79,17 @@ func UploadData(e *core.RecordEvent) error {
 
 // Sync all records to localstore and upload to git.
 func DownloadData(e *core.ServeEvent) error {
+	syncDir := getSyncDir()
+	log.Printf("sync source directory: %s", syncDir)
+
 	files := []string{
 		"lecture",
-		"chapters", // depends on lecture
+		"chapters",     // depends on lecture
 		"mc_questions", // depends on chapters
 	}
 
 	for _, file := range files {
-		filePath := "pb_sync/" + file + ".json"
+		filePath := filepath.Join(syncDir, file+".json")
 		jsonData, err := os.ReadFile(filePath)
 		if err != nil {
 			log.Printf("Error reading file: %v", err)
@@ -79,16 +106,9 @@ func DownloadData(e *core.ServeEvent) error {
 			continue
 		}
 
-		collectionName, _ := records[0]["collectionName"].(string)
-		collectionId, _ := records[0]["collectionId"].(string)
-		collectionKey := collectionName
-		if collectionKey == "" {
-			collectionKey = collectionId
-		}
-
-		collection, err := e.App.FindCollectionByNameOrId(collectionKey)
+		collection, err := e.App.FindCollectionByNameOrId(file)
 		if err != nil {
-			log.Printf("Error finding collection %q: %v", collectionKey, err)
+			log.Printf("Error finding collection %q: %v", file, err)
 			continue
 		}
 
@@ -100,10 +120,12 @@ func DownloadData(e *core.ServeEvent) error {
 
 			delete(record, "collectionId")
 			delete(record, "collectionName")
+			delete(record, "created")
+			delete(record, "updated")
 
 			recordModel.Load(record)
 			if err = e.App.Save(recordModel); err != nil {
-				log.Printf("Error saving record: %v", err)
+				log.Printf("Error saving record %q in %q: %v", recordModel.Id, collection.Name, err)
 				continue
 			}
 		}
