@@ -1,38 +1,22 @@
 [
   {
-    "collectionId": "pbc_1345586850",
-    "collectionName": "lecture",
     "content": "\u003cp\u003eThis application was made 6 days before my Financial Accounting exam. At the time of me writing this I do not know if I passed, but I hope you will.\u003c/p\u003e\r\n\u003cp\u003e\u003ca class=\"github-link\" href=\"https://github.com/Anatoly03/FA-App\"\u003e \u003cem class=\"fa-brands fa-github\"\u003e \u003c/em\u003e We are Open Source! \u003c/a\u003e\u003c/p\u003e\r\n\u003cp\u003eClick 'Next' to continue studying.\u003c/p\u003e",
-    "created": "2026-02-18 19:01:03.098Z",
     "id": "quanh21iq5rbdpj",
-    "subtitle": "Good Luck!",
-    "updated": "2026-02-18 19:31:34.108Z"
+    "subtitle": "Good Luck!"
   },
   {
-    "collectionId": "pbc_1345586850",
-    "collectionName": "lecture",
     "content": "\u003cp\u003eThere exist different accounting systems. Management accounting focuses on company internal affairs, financial accounting informes decision makers outside the company.\u003c/p\u003e\r\n\u003cul\u003e\r\n\u003cli\u003e\u003cstrong\u003eInternal Users:\u003c/strong\u003e Company employees and management\u003c/li\u003e\r\n\u003cli\u003e\u003cstrong\u003eExternal Users:\u003c/strong\u003e investors, creditors, regulation authorities\u003c/li\u003e\r\n\u003c/ul\u003e\r\n\u003cp\u003eFinancial (= external) accounting serves as the bridge between the company and external parties complying with regulatory requirements and supporting credit decisions and investment analysis.\u003c/p\u003e",
-    "created": "2026-02-18 19:07:54.877Z",
     "id": "r7nivr797t9pho3",
-    "subtitle": "Financial Accounting",
-    "updated": "2026-02-18 19:07:54.877Z"
+    "subtitle": "Financial Accounting"
   },
   {
-    "collectionId": "pbc_1345586850",
-    "collectionName": "lecture",
     "content": "\u003cp\u003eExternal accounting is guided by well-defined principles:\u003c/p\u003e\r\n\u003cul type=\"disc\"\u003e\r\n\u003cli\u003e\u003cstrong\u003eObjectivity\u003c/strong\u003e: Financial data must be based on factual, verifiable evidence\u003c/li\u003e\r\n\u003cli\u003e\u003cstrong\u003ePrudence\u003c/strong\u003e: Avoid overestimating revenues or underestimating liabilities\u003c/li\u003e\r\n\u003cli\u003e\u003cstrong\u003eComparability\u003c/strong\u003e: Apply accounting policies consistently across periods\u003c/li\u003e\r\n\u003cli\u003e\u003cstrong\u003eGoing Concern\u003c/strong\u003e: Assume the business will continue operations\u003c/li\u003e\r\n\u003cli\u003e\u003cstrong\u003eMateriality\u003c/strong\u003e: Disclose all information that could influence decisions\u003c/li\u003e\r\n\u003c/ul\u003e",
-    "created": "2026-02-18 19:08:13.060Z",
     "id": "2t0sil646w8xkny",
-    "subtitle": "Key Principles of External Accounting",
-    "updated": "2026-02-18 19:08:13.060Z"
+    "subtitle": "Key Principles of External Accounting"
   },
   {
-    "collectionId": "pbc_1345586850",
-    "collectionName": "lecture",
     "content": "\u003cp\u003eCurrently, this chapter has no lessons. You can help expanding it.\u003c/p\u003e",
-    "created": "2026-02-18 20:58:31.196Z",
     "id": "bgxm86mdlqw2shl",
-    "subtitle": "Next Chapter",
-    "updated": "2026-02-18 20:58:31.196Z"
+    "subtitle": "Next Chapter"
   }
 ]

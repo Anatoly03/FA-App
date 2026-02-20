@@ -1,20 +1,13 @@
 [
   {
-    "collectionId": "pbc_2272205672",
-    "collectionName": "chapters",
-    "created": "2026-02-18 23:38:51.327Z",
     "id": "gftsg6bdm8im7eq",
     "index": 1,
     "lessons": [
       "bgxm86mdlqw2shl"
     ],
-    "title": "Property, Plant, and Equipment \u0026 Investment Property",
-    "updated": "2026-02-18 23:38:51.327Z"
+    "title": "Property, Plant, and Equipment \u0026 Investment Property"
   },
   {
-    "collectionId": "pbc_2272205672",
-    "collectionName": "chapters",
-    "created": "2026-02-18 23:38:51.328Z",
     "id": "dr2w23v6mk00pw9",
     "index": 0,
     "lessons": [
@@ -22,67 +15,42 @@
       "r7nivr797t9pho3",
       "2t0sil646w8xkny"
     ],
-    "title": "Introduction",
-    "updated": "2026-02-18 23:38:51.328Z"
+    "title": "Introduction"
   },
   {
-    "collectionId": "pbc_2272205672",
-    "collectionName": "chapters",
-    "created": "2026-02-18 23:38:51.328Z",
     "id": "c6renzs6o1jr9ps",
     "index": 2,
     "lessons": [],
-    "title": "Intangible Assets",
-    "updated": "2026-02-18 23:38:51.328Z"
+    "title": "Intangible Assets"
   },
   {
-    "collectionId": "pbc_2272205672",
-    "collectionName": "chapters",
-    "created": "2026-02-18 23:38:51.328Z",
     "id": "eg8rimxfcn5hxx5",
     "index": 3,
     "lessons": [],
-    "title": "Inventories",
-    "updated": "2026-02-18 23:38:51.328Z"
+    "title": "Inventories"
   },
   {
-    "collectionId": "pbc_2272205672",
-    "collectionName": "chapters",
-    "created": "2026-02-19 14:31:32.975Z",
     "id": "4a9a9l5hitzl4w7",
     "index": 4,
     "lessons": [],
-    "title": "Provisions",
-    "updated": "2026-02-19 14:31:32.975Z"
+    "title": "Provisions"
   },
   {
-    "collectionId": "pbc_2272205672",
-    "collectionName": "chapters",
-    "created": "2026-02-19 14:40:19.991Z",
     "id": "zlwndd05kdq4bw4",
     "index": 5,
     "lessons": [],
-    "title": "Financial Instruments",
-    "updated": "2026-02-19 14:40:19.991Z"
+    "title": "Financial Instruments"
   },
   {
-    "collectionId": "pbc_2272205672",
-    "collectionName": "chapters",
-    "created": "2026-02-19 14:47:50.491Z",
     "id": "k26h3ao2dojgp21",
     "index": 6,
     "lessons": [],
-    "title": "Earnings Management and Financial Statement Analysis",
-    "updated": "2026-02-19 14:47:50.491Z"
+    "title": "Earnings Management and Financial Statement Analysis"
   },
   {
-    "collectionId": "pbc_2272205672",
-    "collectionName": "chapters",
-    "created": "2026-02-19 22:21:20.571Z",
     "id": "hum0cbjc4ow5411",
     "index": 7,
     "lessons": [],
-    "title": "Basic concepts of bookkeeping",
-    "updated": "2026-02-19 22:26:40.471Z"
+    "title": "Basic concepts of bookkeeping"
   }
 ]

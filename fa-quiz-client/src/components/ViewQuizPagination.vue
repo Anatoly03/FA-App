@@ -142,6 +142,7 @@ watch(() => props.loadedQuestions.length, () => nextTick(clampScrollToLastEntry)
 .view-quiz-pagination-container {
     position: relative;
     margin: auto;
+    margin-bottom: 10px;
     max-width: 600px;
     width: 100%;
 
