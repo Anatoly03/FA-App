@@ -13,4 +13,4 @@ cd ..
 sudo systemctl reload caddy
 
 # Update server
-sudo systemctl reload fa-quiz-api
+sudo systemctl restart fa-quiz-api
