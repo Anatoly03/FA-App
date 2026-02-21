@@ -79,7 +79,7 @@ func DownloadData(e *core.ServeEvent) error {
 	files := []string{
 		"lecture",
 		"chapters",     // depends on lecture
-		"mc_questions", // depends on chapters
+		"questions", // depends on chapters
 	}
 
 	for _, file := range files {

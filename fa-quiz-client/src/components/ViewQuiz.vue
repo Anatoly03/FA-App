@@ -289,7 +289,7 @@ async function fetchChapterEntries(chapterIndex: number) {
         expand: "lessons",
     });
 
-    const chapterQuestions = await pb.collection("mc_questions").getFullList({
+    const chapterQuestions = await pb.collection("questions").getFullList({
         requestKey: "questions-chapter-" + chapterIndex,
         expand: "chapter",
         filter: `chapter.index = ${chapterIndex}`,

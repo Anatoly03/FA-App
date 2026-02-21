@@ -11,7 +11,7 @@ export type QuizEntry =
           isActive: boolean;
 
           /**
-           * @pocketbase `mc_questions.id`
+           * @pocketbase `questions.id`
            */
           id: string;
 
@@ -21,19 +21,19 @@ export type QuizEntry =
           chapterIndex: number;
 
           /**
-           * @pocketbase `mc_questions.question`
+           * @pocketbase `questions.question`
            */
           question: string;
 
           /**
-           * @pocketbase `mc_questions.correctAnswer` + mc_questions.otherAnswers - stored as a comma-separated string in the database
+           * @pocketbase `questions.correctAnswer` + questions.otherAnswers - stored as a comma-separated string in the database
            * @description shuffled, remember where correct answer is after shuffling
            */
           options: string[];
           correctAnswer: number;
 
           /**
-           * @pocketbase `mc_questions.footer`
+           * @pocketbase `questions.footer`
            */
           footer: string | null;
 
